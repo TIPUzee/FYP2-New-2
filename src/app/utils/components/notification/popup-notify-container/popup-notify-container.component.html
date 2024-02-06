@@ -1,0 +1,6 @@
+<div class="fixed bottom-[40px] left-1/2 -translate-x-1/2 h-[90px] z-[9999999]">
+    <app-notification
+        *ngFor="let notification of notifications" @NotificationAddRemoveAnimation [message]="notification.message"
+        [type]="notification.type"
+    ></app-notification>
+</div>

@@ -1,0 +1,77 @@
+.sidebar-toggler {
+    .top {
+        transform: translateY(0.15rem) rotate(0deg) translateZ(0);
+    }
+
+    .bottom {
+        transform: translateY(-0.15rem) rotate(0deg) translateZ(0);
+    }
+
+    &:hover {
+        .top {
+            transform: translateY(0.15rem) rotate(15deg) translateZ(0);
+        }
+
+        .bottom {
+            transform: translateY(-0.15rem) rotate(-15deg) translateZ(0);
+        }
+    }
+
+    &.closed {
+        .top {
+            transform: translateY(0.15rem) rotate(-15deg) translateZ(0);
+        }
+
+        .bottom {
+            transform: translateY(-0.15rem) rotate(15deg) translateZ(0);
+        }
+    }
+}
+
+.links-container:has(.active) .bg-layer {
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.links-container:has( :nth-child(2).active) .bg-layer {
+    top: 0;
+}
+
+.links-container:has( :nth-child(3).active) .bg-layer {
+    top: 100%;
+}
+
+.links-container:has( :nth-child(4).active) .bg-layer {
+    top: 200%;
+}
+
+.links-container:has( :nth-child(5).active) .bg-layer {
+    top: 300%;
+}
+
+.links-container:has( :nth-child(6).active) .bg-layer {
+    top: 400%;
+}
+
+.links-container:has( :nth-child(7).active) .bg-layer {
+    top: 500%;
+}
+
+.links-container:has( :nth-child(8).active) .bg-layer {
+    top: 600%;
+}
+
+.links-container:has( :nth-child(9).active) .bg-layer {
+    top: 700%;
+}
+
+.links-container:has( :nth-child(10).active) .bg-layer {
+    top: 800%;
+}
+
+.links-container:has( :nth-child(11).active) .bg-layer {
+    top: 900%;
+}
+
+.links-container:has( :nth-child(12).active) .bg-layer {
+    top: 1000%;
+}

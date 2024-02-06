@@ -1,0 +1,183 @@
+<div class="fixed bottom-0 left-0 right-0 w-full pointer-events-none z-[99]">
+    <div class="mb-12 container mx-auto">
+        <div class="flex justify-end">
+            <a
+                routerLink="/p/suggested-doctors"
+                type="button"
+                class="pointer-events-auto shake-top text-center block w-fit rounded bg-orange-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-orange-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-orange-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-orange-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+            >
+                Book Brain Specialists
+            </a>
+        </div>
+    </div>
+</div>
+<div class="mb-16">
+    <div class="container mx-auto">
+        <div>
+            <div class="rounded-lg shadow-lg">
+                <div class="bg-gradient-primary-300 text-primary-100 text-opacity-80 bg-opacity-90 rounded-t-[inherit] p-6 pb-3">
+                    <div class="mb-1 text-2xl font-semibold text-primary-100 text-opacity-90">Optimize Brain Health Assessment</div>
+                    <div class="text-base text-primary-100 text-opacity-80">Enhance Accuracy with Clear Brain MRI Images</div>
+                </div>
+                <div class="bg-primary-100 bg-opacity-90 rounded-b-[inherit] p-6 text-dark text-opacity-70">
+                    <div class="mb-2"
+                        >To enable accurate brain health assessments, upload a clear picture of your Brain MRI. Your input is vital in providing our AI-driven system with
+                        the necessary information for precise brain tumor detection.</div
+                    >
+                    <div class="mb-2"
+                        >Empower our platform to deliver thorough and insightful brain health evaluations by uploading a clear Brain MRI image. Your contribution aids in
+                        enhancing the accuracy of our tumor detection analysis, ensuring a more comprehensive understanding of potential health concerns.</div
+                    >
+                    <div class="mb-2"
+                        >Your brain health matters to us, and the clarity of your MRI image significantly impacts the precision of our analysis. Join us in improving your
+                        healthcare experience by providing a clear Brain MRI for enhanced detection accuracy.</div
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mb-16">
+    <div class="container mx-auto">
+        <div>
+            <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-lg border-2 border-gray-300 border-dashed">
+                <!-- File Input -->
+                <div class="flex items-center justify-center w-full opacity-80">
+                    <label
+                        for="dropzone-file"
+                        fileDragDrop
+                        class="transition-all duration-500 flex flex-col items-center justify-center w-full h-64 rounded-lg cursor-pointer bg-transparent"
+                    >
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                                />
+                            </svg>
+                            <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Your Brain MRI Image(s)</span></p>
+                            <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <p class="text-xs text-gray-500">PNG, JPG or JPEG (Clear Picture for Better Results)</p>
+                        </div>
+                        <input id="dropzone-file" type="file" class="hidden" />
+                    </label>
+                </div>
+                <!-- File Input -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mb-16 hidden">
+    <div class="container mx-auto">
+        <div>
+            <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-lg">
+                <div class="p-6">
+                    <div class="text-dark text-opacity-90 text-2xl font-semibold">Results:</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mb-16">
+    <div class="container mx-auto">
+        <div>
+            <div class="grid grid-cols-4 gap-x-6 gap-y-6">
+                <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-lg">
+                    <div class="p-6">
+                        <div class="text-dark text-opacity-100 flex justify-between items-end mb-1">
+                            <div class="font-semibold text-lg">No Tumor</div>
+                            <div class="text-dark text-opacity-60">1 Minute Ago</div>
+                        </div>
+                        <div class="img bg-black rounded-lg">
+                            <img src="assets/img/brain-mri.jpg" alt="" class="rounded-lg shadow-md aspect-video w-full object-contain" />
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-500 bg-opacity-100 rounded-lg shadow-lg">
+                    <div class="p-6">
+                        <div class="text-primary-100 text-opacity-100 flex justify-between items-end mb-1">
+                            <div class="font-semibold text-lg">Tumor Detected</div>
+                            <div class="text-primary-100 text-opacity-70">5 Minute Ago</div>
+                        </div>
+                        <div class="img bg-black rounded-lg">
+                            <img src="assets/img/brain-mri.jpg" alt="" class="rounded-lg shadow-md aspect-video w-full object-contain" />
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-lg">
+                    <div class="p-6">
+                        <div class="text-dark text-opacity-100 flex justify-between items-end mb-1">
+                            <div class="font-semibold text-lg">No Tumor</div>
+                            <div class="text-dark text-opacity-60">5 Minute Ago</div>
+                        </div>
+                        <div class="img bg-black rounded-lg">
+                            <img src="assets/img/brain-mri.jpg" alt="" class="rounded-lg shadow-md aspect-video w-full object-contain" />
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-lg">
+                    <div class="p-6">
+                        <div class="text-dark text-opacity-100 flex justify-between items-end mb-1">
+                            <div class="font-semibold text-lg">No Tumor</div>
+                            <div class="text-dark text-opacity-60">7 Minute Ago</div>
+                        </div>
+                        <div class="img bg-black rounded-lg">
+                            <img src="assets/img/brain-mri.jpg" alt="" class="rounded-lg shadow-md aspect-video w-full object-contain" />
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-lg">
+                    <div class="p-6">
+                        <div class="text-dark text-opacity-100 flex justify-between items-end mb-1">
+                            <div class="font-semibold text-lg">No Tumor</div>
+                            <div class="text-dark text-opacity-60">8 Minute Ago</div>
+                        </div>
+                        <div class="img bg-black rounded-lg">
+                            <img src="assets/img/brain-mri.jpg" alt="" class="rounded-lg shadow-md aspect-video w-full object-contain" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mb-20">
+    <div class="container mx-auto analytics-section">
+        <section class="text-center lg:text-left">
+            <div class="container mx-auto text-center lg:text-left">
+                <div class="grid items-center grid-cols-12">
+                    <div class="lg:mb-0 2xl:col-span-6 xl:col-span-7 lg:col-span-8 col-span-12 lg:order-none order-2">
+                        <div
+                            class="glass relative z-[1] block rounded-lg bg-primary-100 bg-opacity-70 px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] md:px-12 lg:-mr-14 md:backdrop-blur-[8px] backdrop-blur-md"
+                        >
+                            <h2 class="text mb-4 md:text-3xl text-2xl">Explore <span class="font-semibold">Disease Prediction Model</span></h2>
+                            <p class="text text-lg mb-2 text-dark text-opacity-90 font-semibold"> Empowering Health Insights through Predictive Analysis </p>
+                            <p class="text-base text-dark text-opacity-80 mb-3">
+                                Embark on a journey to understand your health better with our specialized disease prediction model. Gain valuable insights to aid your
+                                healthcare journey and make informed decisions about your well-being.
+                            </p>
+                            <p class="text-base text-dark text-opacity-80 mb-5">
+                                Utilizing cutting-edge AI technology, our disease prediction model simplifies complex health data, offering a clearer understanding of
+                                potential health issues.
+                            </p>
+                            <div>
+                                <a routerLink="/m/d/a/i" class="text-blue-500 underline">Explore Disease Prediction Model</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-img lg:-ms-96 lg:h-80 h-[80px] 2xl:col-span-6 xl:col-span-5 lg:col-span-4 col-span-12 lg:order-none order-1 lg:pe-0 pe-6">
+                        <img
+                            src="assets/img/growth.jpeg"
+                            class="lg:w-full md:w-[90%] sm:w-[80%] w-[90%] lg:ms-0 ms-auto shadow-lg lg:h-full md:h-[300px] h-[500px] rounded-lg object-cover"
+                            alt=""
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

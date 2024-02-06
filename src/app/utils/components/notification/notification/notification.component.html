@@ -1,0 +1,9 @@
+<span class="tw-detect-class hidden bg-success-600 bg-danger-600"></span>
+<div
+    [ngClass]="{'bg-success-600': type === 'success', 'bg-danger-600': type === 'error'}" class="text-sm font-extralight tracking-wide shadow-lg rounded-2xl px-3 pt-1.5 pb-1
+    text-opacity-100 select-none mb-2 mx-auto w-fit text-white"
+>
+    {{
+        message
+    }}
+</div>

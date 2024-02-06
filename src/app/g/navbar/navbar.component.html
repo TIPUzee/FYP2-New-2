@@ -1,0 +1,129 @@
+<div #navbar class="w-full py-6 bg-primary-400 bg-opacity-80 backdrop-blur-md z-[99] navbar fixed top-0 transition-all duration-[700ms]">
+    <div class="container mx-auto">
+        <div class="lg:hidden flex items-center">
+            <div class="relative z-20 text-3xl cursor-pointer py-2 px-2 w-min" (click)="navbar_popup.classList.toggle('active') && animateNarbarPopupOpening()">
+                <fa-icon [icon]="faBars"></fa-icon>
+            </div>
+            <div class="relative z-10 h-full flex-grow">
+                <div title="AI-Disease Predictor Logo" class="ms-[-42px] flex justify-center opacity-80 hover:opacity-100 transition-opacity duration-300 h-full">
+                    <img src="/assets/img/inline-logoinline-logo.png" alt="" class="h-[45px]">
+                </div>
+            </div>
+        </div>
+        <div class="lg:flex justify-between py-3 hidden">
+            <div>
+                <div class="relative opacity-0 animated">
+                    <a routerLink="/" title="AI-Disease Predictor Logo" class="hover:opacity-100 transition-opacity duration-300">
+                        <img src="/assets/img/inline-logoinline-logo.png" alt="" class="h-[70px]">
+                    </a>
+                </div>
+            </div>
+            <div class="flex xl:text-xl text-lg items-center gap-5">
+                <div>
+                    <a routerLink="/" class="text-dark relative opacity-0 animated hover:text-black transition-opacity duration-300">
+                        <span class="align-super">Home</span>
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/about" class="relative opacity-0 animated text-dark hover:text-black transition-opacity duration-300">
+                        <span class="align-super">About</span>
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/m/d/a/i" class="relative opacity-0 animated text-dark hover:text-black transition-opacity duration-300">
+                        <span class="align-super">Disease Diagnosis</span>
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/m/t/i" class="relative opacity-0 animated text-dark hover:text-black transition-opacity duration-300">
+                        <span class="align-super">Brain Tumor</span>
+                    </a>
+                </div>
+                <div>
+                    <a (click)="scroller.scrollToAnchor('contacts')" class="cursor-pointer relative opacity-0 animated text-dark hover:text-black transition-opacity duration-300">
+                        <span class="align-super">Contacts</span>
+                    </a>
+                </div>
+                <div class="pb-1 relative opacity-0 animated">
+                    <a href="https://twitter.com/?lang=en" target="_blank" title="Visit our twitter profile" class="text-dark hover:text-black transition-opacity duration-300">
+                        <fa-icon [icon]="faTwitter"></fa-icon>
+                    </a>
+                </div>
+                <div class="pb-1 text-[1.35rem] relative opacity-0 animated">
+                    <a href="https://www.facebook.com/" target="_blank" title="Visit our facebook profile" class="text-dark hover:text-black transition-opacity duration-300">
+                        <fa-icon [icon]="faFacebookF"></fa-icon>
+                    </a>
+                </div>
+                <div class="relative opacity-0 animated">
+                    <a routerLink="/login" class="text-dark hover:text-black transition-opacity duration-300">
+                        <span class="align-super">Login</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div #navbar_popup class="fixed hidden left-0 top-0 bottom-0 right-0 rounded-b-full min-h-full min-w-full bg-primary-400 z-[100] navbar-popup opacity-0 ">
+            <div class="flex flex-col justify-center min-h-full gap-5 py-5 bg-primary-400 ">
+                <div class="flex justify-center">
+                    <div>
+                        <a routerLink="/" title="AI-Disease Predictor Logo" class="opacity-70 hover:opacity-100 transition-opacity duration-300">
+                            <img src="/assets/img/inline-logoinline-logo.png" alt="" class="h-[70px]">
+                        </a>
+                    </div>
+                </div>
+                <div class="scrollable flex flex-col text-xl items-center gap-1 overflow-y-auto max-h-[calc(100vh-140px)]">
+                    <div>
+                        <div (click)="navbar_popup.classList.toggle('active') || animateNarbarPopupClosing()" class="text-dark hover:text-black transition-opacity duration-300 py-3 px-3 -mx-3 -my-3 cursor-pointer">
+                            <fa-icon [icon]="faXmark"></fa-icon>
+                        </div>
+                    </div>
+
+                    <div>
+                        <a routerLink="/" class="text-dark hover:text-black transition-opacity duration-300">
+                            <span class="align-super">Home</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a routerLink="about" class="text-dark hover:text-black transition-opacity duration-300">
+                            <span class="align-super">About</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a routerLink="departments" class="text-dark hover:text-black transition-opacity duration-300">
+                            <span class="align-super">Departments</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a routerLink="faq" class="text-dark hover:text-black transition-opacity duration-300">
+                            <span class="align-super">FAQ</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a class="text-dark hover:text-black transition-opacity duration-300">
+                            <span class="align-super">Contacts</span>
+                        </a>
+                    </div>
+                    <div class="pb-1">
+                        <a routerLink="https://twitter.com/?lang=en" title="Visit our twitter profile" class="text-dark hover:text-black transition-opacity duration-300">
+                            <fa-icon [icon]="faTwitter"></fa-icon>
+                        </a>
+                    </div>
+                    <div class="pb-1 text-[1.35rem]">
+                        <a routerLink="https://www.facebook.com/" title="Visit our facebook profile" class="text-dark hover:text-black transition-opacity duration-300">
+                            <fa-icon [icon]="faFacebookF"></fa-icon>
+                        </a>
+                    </div>
+                    <div>
+                        <a routerLink="login" class="text-dark hover:text-black transition-opacity duration-300">
+                            <span class="align-super">Login</span>
+                        </a>
+                    </div>
+                    <div>
+                        <div (click)="navbar_popup.classList.toggle('active') || animateNarbarPopupClosing()" class="text-dark hover:text-black transition-opacity duration-300 py-3 px-3 -mx-3 -my-3 cursor-pointer">
+                            <fa-icon [icon]="faXmark"></fa-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

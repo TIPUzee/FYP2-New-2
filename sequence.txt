@@ -1,0 +1,174 @@
+Sign in: 
+
+
+
+
+@startuml
+!theme vibrant
+actor User
+boundary UI
+participant Server
+database Database
+
+activate User
+activate UI
+
+User -> UI: 1. Clicks on "Login" button
+
+UI -> User: 2. Redirects to login page
+
+User -> UI: 3. Fills credentials and clicks "Login" button
+UI -> Server: Verifies credentials 
+activate Server
+Server-> Database: Checks for valid credentials
+activate Database
+Database --> Server: Return credentials validity
+deactivate Database
+alt Valid credentials
+    Server--> UI: return success response
+    UI --> User: Redirects to dashboard
+else Invalid credentials
+    Server --> UI: return failure response
+    deactivate Server
+    UI --> User: Shows error message
+    User -> UI: Tries again
+end
+
+deactivate User
+deactivate UI
+
+
+destroy User
+destroy UI
+destroy Server
+destroy Database
+@enduml
+
+
+
+///////////////////////////////
+
+
+Forgot password 
+
+@startuml
+!theme vibrant
+actor User
+boundary UI
+participant Server
+database Database
+
+activate User
+activate UI
+
+User -> UI: 1. Clicks "Forgot Password" link
+
+UI -->> User: 1.1. Redirects to reset password page
+
+User -> UI: 2. Enters email and clicks \n"Get verification code" button
+UI -> Server: 2.1. Sends credentials 
+activate Server
+Server-> Database: 2.2. Checks for email
+activate Database
+Database -->> Server: 2.3. Returns data
+deactivate Database
+
+alt Email exists
+    Server ->> Email: 2.4. Sends verification email
+    Server -->> UI: 2.5. Returns success response
+    UI -->> User: 2.6. Redirects to verification page
+    User -> UI: 3. Enters verification code \nand clicks "Verify Email" button
+    UI -> Server: 3.1. Send verification code
+    activate Server
+    Server -> Server: 3.2. Varifies verification code
+    alt Correct verification code
+          Server -->> UI: 3.3. Success response
+          UI -->> User: 3.4. Redirects to login page
+    else Incorrect verification code
+          Server -->> UI: 3.5. Failure response
+          deactivate Server
+          UI -->> User: 3.6. Shows error message
+          User -> UI: 4. Tries again
+else Invalid credentials
+    Server -->> UI: 2.7. return failure response
+    deactivate Server
+    UI -->> User: 2.8. Shows error message
+    User -> UI: 3. Tries again
+end
+
+deactivate User
+deactivate UI
+
+
+destroy User
+destroy UI
+destroy Server
+destroy Database
+@enduml
+
+
+
+//////////////////////////////////
+
+
+
+Sign up
+
+@startuml
+!theme vibrant
+actor User
+boundary UI
+participant Server
+database Database
+
+activate User
+activate UI
+
+User -> UI: 1. Clicks "Register" button
+
+UI -->> User: 1.1. Redirects to the\n registration page
+
+User -> UI: 2. Enters credentials and\n clicks "Register" button
+UI -> Server: 2.1. Sends credentials 
+activate Server
+Server-> Database: 2.2. Checks for credentials\n validity
+activate Database
+Database -->> Server: 2.3. Returns validation\n response
+deactivate Database
+alt Valid credentails
+ Server -->> UI: 2.4. Returns success response
+ UI -->> User: 2.5. Redirect to the email \nverification page
+ User -> UI: 3. Enters verification code
+ UI -> Server: 3.1. Sends verification code
+ activate Server
+ Server -> Server: 3.2. Verifies verification\n code
+ activate Server
+ deactivate Server
+ alt Valid verification code
+  Server -> Database: 3.3. Registers the user
+  activate Database
+  Database -->> Server: 3.4. Returns response
+  deactivate Database
+  Server -->> UI: 3.5. Returns success message
+  UI -->> User: 3.6. Redirects to the\n respective dashboard
+ else Invalid verification code
+  Server -->> UI: 3.5a.1. Returns failure response
+  deactivate Server
+  UI -->> User: 3.5a.2. Shows error message
+ end
+else Invalid credentials
+ Server -->> UI: 2.4a.1. Returns failure response
+ deactivate Server
+ UI -->> User: 2.4a.2. Shows error message
+ User -> UI: 3. Tries again
+end
+deactivate User
+deactivate UI
+
+
+destroy Database
+destroy Server
+destroy UI
+destroy User
+@enduml
+

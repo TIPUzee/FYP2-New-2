@@ -1,0 +1,43 @@
+<div class="main workspace">
+    <div class="rounded-lg px-3 py-5 relative">
+        <div class="mb-3">
+            <div class="relative mb-4 w-full items-stretch">
+                <div class="mb-4 text-xl font-semibold text-dark">Book Appointment With Doctors</div>
+
+                <div class="bg-primary-100 bg-opacity-90 p-3 pb-4 rounded-lg shadow-lg">
+                    <div class="w-full">
+                        <label for="" class="mb-1 block">Preferred Language</label>
+                        <select data-te-select-init class="">
+                            <option value="1">Urdu</option>
+                            <option value="2">English</option>
+                            <option value="2">Pubjabi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-x-5 gap-y-20 mt-16">
+                    <ng-container *ngFor="let i of commonService.range(0, 18)">
+                        <a routerLink="../doctor" class="cursor-pointer block">
+                            <div class="rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-primary-100 bg-opacity-90 p-4">
+                                <div class="px-0 mb-2 -mt-12 relative">
+                                    <div class="absolute right-2 top-0 -translate-y-1/2 px-4 pb-0.5 pt-1 bg-orange-500 text-white rounded-md shadow-3-strong">Urdu</div>
+                                    <img src="assets/img/doctor-2.jpeg" alt="" class="w-full aspect-[16/11] object-cover rounded-lg shadow-lg">
+                                </div>
+                                <div class="">
+                                    <div class="flex justify-between">
+                                        <div>Dr. David Patel</div>
+                                        <div><app-rating-stars></app-rating-stars></div>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <div class="text-base text-dark text-opacity-90">Neurosurgeon</div>
+                                        <div class="text-sm text-dark text-opacity-60">Rs. 1200</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

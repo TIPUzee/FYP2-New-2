@@ -1,0 +1,17 @@
+<div
+    [ngClass]="component != null ? 'pointer-events-auto opacity-100' : ''"
+    class="bg-slate-200 pointer-events-none opacity-0 absolute top-0 right-0 w-full h-full z-[1069] isolate outline-4 outline-white"
+>
+    <div class="absolute top-0 h-full w-screen right-full bg-dark backdrop-blur-md blur opacity-70"></div>
+    <button
+        type="button"
+        class="absolute text-white text-opacity-90 top-3 right-6 box-content bg-danger-600 border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none p-1 rounded"
+        aria-label="Close"
+        (click)="onClose.emit(true)"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+    <ng-container #componentPlaceHolder></ng-container>
+</div>

@@ -1,0 +1,858 @@
+<div class="main workspace">
+    <div class="inner-container mx-auto">
+        <div class="rounded-lg shadow-lg h-[300px]">
+            <div class="w-full h-full rounded-[inherit]">
+                <label
+                    for="dropzone-file"
+                    fileDragDrop
+                    class="h-full w-full rounded-[inherit] flex flex-col items-center justify-center border-2 border-gray-300 border-dashed cursor-pointer bg-primary-100 hover:bg-primary-200 hover:text-white transition-colors duration-500"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div class="flex flex-col items-center justify-center text-center pt-5 pb-6">
+                        <svg class="w-16 h-16 mb-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                            />
+                        </svg>
+                        <p class="text-xs mb-6 max-w-[70px]">Your Cover Picture</p>
+                    </div>
+                    <input id="dropzone-file" type="file" class="hidden" />
+                </label>
+            </div>
+        </div>
+        <div class="profile-img pointer-events-none">
+            <div class="flex items-center flex-col gap-y-2 -mt-24 pointer-events-none">
+                <div class="w-[180px] object-cover aspect-square rounded-full shadow-lg pointer-events-auto">
+                    <div class="w-full h-full rounded-[inherit]">
+                        <label
+                            for="dropzone-file"
+                            fileDragDrop
+                            class="h-full w-full rounded-[inherit] flex flex-col items-center justify-center border-2 border-gray-300 border-dashed cursor-pointer bg-primary-100 hover:bg-primary-200 hover:text-white transition-colors duration-500"
+                            data-te-ripple-init
+                            data-te-ripple-color="light"
+                        >
+                            <div class="flex flex-col items-center justify-center text-center pt-5 pb-6">
+                                <svg class="mt-2 w-10 h-10 mb-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                                    />
+                                </svg>
+                                <p class="text-xs max-w-[70px]">Your Profile Picture</p>
+                            </div>
+                            <input id="dropzone-file-1" type="file" class="hidden" />
+                        </label>
+                    </div>
+                </div>
+                <div class="text-black font-semibold text-2xl">{{ profileFullName }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Status and Approval Request -->
+    <div class="inner-container mx-auto mt-8 mb-3">
+        <div class="flex justify-end">
+            <div class="flex flex-col gap-y-0.5">
+                <div class="">
+                    Account Status:
+                    <span class="text-danger-600 font-semibold">
+                        Approval Rejected
+                        <fa-icon data-te-toggle="modal" data-te-target="#accountStatusDescModal" [icon]="faCircleQuestion" class="text-lg cursor-pointer"></fa-icon>
+                    </span>
+                </div>
+                <a
+                    type="button"
+                    data-te-toggle="modal"
+                    data-te-target="#sendAccountApprovalRequestModal"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                    class="cursor-pointer text-center w-full block px-5 pb-1.5 pt-2 bg-blue-600 shadow-lg rounded hover:bg-blue-700 text-primary-100 text-sm font-light"
+                    >Submit Account Approval Request</a
+                >
+            </div>
+        </div>
+        <!-- Account Status and Approval Request -->
+    </div>
+
+    <!-- Profile Details -->
+    <div class="inner-container mx-auto mt-2">
+        <div class="bg-primary-100 bg-opacity-90 p-6 rounded-lg shadow-lg">
+            <div class="mb-3 flex justify-between items-end">
+                <div class="text-black font-semibold text-lg"> Your Profile Details </div>
+                <div class="">
+                    <div
+                        [ngClass]="profileFullName != 'Dr. Zeeshan' ? 'grid-rows-[1fr] opacity-100' : ''"
+                        class="grid grid-rows-[1fr] transition-all duration-500 opacity-0"
+                    >
+                        <div class="overflow-hidden">
+                            <div class="flex gap-x-1">
+                                <a
+                                    type="button"
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light"
+                                    class="cursor-pointer inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                                >
+                                    Reload
+                                </a>
+                                <a
+                                    type="button"
+                                    data-te-toggle="modal"
+                                    data-te-target="#exampleModalNonInvasive"
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light"
+                                    class="cursor-pointer shake-top text-center block w-fit rounded bg-danger-600 text-neutral-50 shadow-md hover:bg-danger-700 hover:shadow-lg px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                >
+                                    Update
+                                </a>
+                            </div>
+                            <div class="h-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-12 gap-x-4 gap-y-5">
+                <!-- Full name -->
+                <div class="col-span-4">
+                    <div class="relative mb-3" data-te-input-wrapper-init>
+                        <input
+                            type="text"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInput1"
+                            placeholder="e.g. John"
+                            #fullNameInput
+                            (keyup)="doctor.changeFullName(fullNameInput.value)"
+                            value="{{ profileFullName }}"
+                        />
+                        <label
+                            for="exampleFormControlInput1"
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >
+                            Full Name
+                        </label>
+                    </div>
+                </div>
+                <!-- Full name -->
+                <!-- DOB -->
+                <div class="col-span-4">
+                    <div #dobInput class="relative mb-3" id="patient-profile-dob" data-te-input-wrapper-init>
+                        <input
+                            type="text"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-blue-600 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            placeholder="Select a date"
+                        />
+                        <label
+                            for="floatingInput"
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
+                        >
+                            Date of birth
+                        </label>
+                    </div>
+                </div>
+                <!-- DOB -->
+                <!-- WhatsApp Number -->
+                <div class="col-span-4">
+                    <div class="relative mb-3" data-te-input-wrapper-init>
+                        <input
+                            type="text"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInput1"
+                            placeholder="e.g. +923012345678"
+                        />
+                        <label
+                            for="exampleFormControlInput1"
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >
+                            WhatsApp Number
+                        </label>
+                        <div
+                            class="text-end absolute w-full text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary"
+                            data-te-input-helper-ref
+                        >
+                            For Professional User
+                        </div>
+                    </div>
+                </div>
+                <!-- WhatsApp Number -->
+                <!-- Email -->
+                <div class="col-span-4">
+                    <div class="relative mb-3" data-te-input-wrapper-init>
+                        <input
+                            type="email"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInput1"
+                            placeholder="e.g. john@gmail.com"
+                        />
+                        <label
+                            for="exampleFormControlInput1"
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >
+                            Email
+                        </label>
+                        <div
+                            class="text-end absolute w-full text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary"
+                            data-te-input-helper-ref
+                        >
+                            For Professional User
+                        </div>
+                    </div>
+                </div>
+                <!-- Email -->
+                <!-- Password -->
+                <div class="col-span-4">
+                    <div class="relative mb-3" data-te-input-wrapper-init>
+                        <input
+                            type="password"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInput1"
+                            placeholder="e.g. AStrongPassword@123"
+                        />
+                        <label
+                            for="exampleFormControlInput1"
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >
+                            Password
+                        </label>
+                    </div>
+                </div>
+                <!-- Password -->
+                <!-- Confirm Password -->
+                <div class="col-span-4">
+                    <div class="relative mb-3" data-te-input-wrapper-init>
+                        <input
+                            type="password"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInput1"
+                            placeholder="e.g. AStrongPassword@123"
+                        />
+                        <label
+                            for="exampleFormControlInput1"
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >
+                            Confirm Password
+                        </label>
+                    </div>
+                </div>
+                <!-- Confirm Password -->
+                <!-- Specialization Category -->
+                <div class="col-span-4">
+                    <div #languageSelectorInputHolder>
+                        <select data-te-select-init id="specialization" class="">
+                            <option value="-1">Select a Category</option>
+                            <option value="p">Brain Specialist</option>
+                            <option value="d">This Specialist</option>
+                            <option value="d">That Specialist</option>
+                        </select>
+                        <label for="specialization" data-te-select-label-ref>Your Specialization Category</label>
+                    </div>
+                </div>
+                <!-- Specialization Category -->
+                <!-- Specialization -->
+                <div class="col-span-4">
+                    <div class="relative" data-te-input-wrapper-init>
+                        <input
+                            type="text"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInput1"
+                            placeholder="e.g. Neurologist"
+                        />
+                        <label
+                            for="exampleFormControlInput1"
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >
+                            Specialization
+                        </label>
+                    </div>
+                </div>
+                <!-- Specialization -->
+                <!-- Charges Per Appointment (Rupees) -->
+                <div class="col-span-4">
+                    <div class="relative" data-te-input-wrapper-init>
+                        <input
+                            type="number"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInput1"
+                            placeholder="e.g. 500"
+                            min="250"
+                            max="5000"
+                            value="250"
+                        />
+                        <label
+                            for="exampleFormControlInput1"
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >
+                            Charges Per Appointment (Rupees)
+                        </label>
+                    </div>
+                </div>
+                <!-- Charges Per Appointment (Rupees) -->
+                <!-- Max Meeting Duration (Minutes) -->
+                <div class="col-span-4">
+                    <div class="relative" data-te-input-wrapper-init>
+                        <input
+                            type="number"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInput1"
+                            placeholder="e.g. 30"
+                            min="15"
+                            max="90"
+                            value="20"
+                        />
+                        <label
+                            for="exampleFormControlInput1"
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >
+                            Max Meeting Duration (Minutes)
+                        </label>
+                    </div>
+                </div>
+                <!-- Max Meeting Duration (Minutes) -->
+                <div class="col-span-4"></div>
+                <div class="col-span-4"></div>
+                <!-- Weekly Availibility Durations -->
+                <div class="col-span-12 -mb-3">Your Availibility Time</div>
+                <ng-container *ngFor="let day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']">
+                    <div class="col-span-4 -mb-2">
+                        <div class="flex gap-x-3">
+                            <div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
+                                <input
+                                    #weekdayCheckBox
+                                    class="relative float-left -ml-[1.5rem] mr-[6px] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:-mt-px checked:after:ml-[0.25rem] checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:-mt-px checked:focus:after:ml-[0.25rem] checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-l-0 checked:focus:after:border-t-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent dark:border-neutral-600 dark:checked:border-primary dark:checked:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                    type="checkbox"
+                                    value=""
+                                    id="weekdayInputBox{{ day }}"
+                                    (change)="
+                                        weekdayCheckBox.checked ? weekdayInputsGroup.removeAttribute('readonly') : weekdayInputsGroup.setAttribute('readonly', 'true')
+                                    "
+                                />
+                                <label class="inline-block pl-[0.15rem] hover:cursor-pointer text-dark text-opacity-75 mb-1" for="weekdayInputBox{{ day }}">
+                                    {{ day }}
+                                </label>
+                            </div>
+                        </div>
+                        <div
+                            #weekdayInputsGroup
+                            readonly="true"
+                            class="[&[readonly='true']]:pointer-events-none [&[readonly='true']]:opacity-30 grid grid-cols-2 gap-x-2"
+                        >
+                            <div class="">
+                                <div class="relative" data-te-timepicker-init data-te-input-wrapper-init>
+                                    <input
+                                        type="text"
+                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                        id="form1"
+                                    />
+                                    <label
+                                        for="form1"
+                                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                                    >
+                                        From
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="relative" data-te-timepicker-init data-te-input-wrapper-init>
+                                    <input
+                                        type="text"
+                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                        id="form1"
+                                    />
+                                    <label
+                                        for="form1"
+                                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                                    >
+                                        To
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- Weekly Availibility Durations -->
+                <!-- Languages -->
+                <div class="cursor-default col-span-12">
+                    <div class="mb-1">Your Languages</div>
+                    <div
+                        #languagesHolder
+                        class="border border-current border-opacity-70 rounded-md p-2 cursor-default flex flex-wrap items-center gap-x-2 gap-y-2 [&_input]:opacity-0 [&_input]:pointer-events-none shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+                    >
+                        <div
+                            class="transition-colors duration-500 select-none cursor-default hover:bg-gray-200 [&:hover_.icon]:text-opacity-40 text-sm w-fit border border-current border-opacity-50 pe-1 ps-4 pt-1.5 pb-1 rounded-full flex justify-between"
+                        >
+                            <span>English</span>
+                            <span class="icon text-dark text-opacity-0 transition-colors duration-200 cursor-pointer hover:!text-opacity-80 px-2.5"
+                                ><fa-icon [icon]="faXmark"></fa-icon
+                            ></span>
+                        </div>
+                        <div
+                            class="transition-colors duration-500 select-none cursor-default hover:bg-gray-200 [&:hover_.icon]:text-opacity-40 text-sm w-fit border border-current border-opacity-50 pe-1 ps-4 pt-1.5 pb-1 rounded-full flex justify-between"
+                        >
+                            <span>Hindi</span>
+                            <span class="icon text-dark text-opacity-0 transition-colors duration-200 cursor-pointer hover:!text-opacity-80 px-2.5"
+                                ><fa-icon [icon]="faXmark"></fa-icon
+                            ></span>
+                        </div>
+                        <div
+                            class="transition-colors duration-500 select-none cursor-default hover:bg-gray-200 [&:hover_.icon]:text-opacity-40 text-sm w-fit border border-current border-opacity-50 pe-1 ps-4 pt-1.5 pb-1 rounded-full flex justify-between"
+                        >
+                            <span>Urdu</span>
+                            <span class="icon text-dark text-opacity-0 transition-colors duration-200 cursor-pointer hover:!text-opacity-80 px-2.5"
+                                ><fa-icon [icon]="faXmark"></fa-icon
+                            ></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-4 -mt-2">
+                    <div #languageSelectorInputHolder data-te-placement="left" data-te-toggle="tooltip" title="Choose your intended role." class="">
+                        <select data-te-select-init class="">
+                            <option value="-1">Add New Language</option>
+                            <option value="p">English</option>
+                            <option value="d">Pubjabi</option>
+                            <option value="d">Urdu</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Languages -->
+                <div class="col-span-4"></div>
+                <div class="col-span-4"></div>
+                <!-- Experiences -->
+                <div class="text-black font-semibold text-lg col-span-12 -mb-3">Your Education or Work Experiences</div>
+                <div class="flex flex-col gap-y-4 col-span-12">
+                    <ng-container *ngFor="let i of commonService.range(0, 3)">
+                        <div class="relative rounded-lg bg-primary-100 border border-dark border-opacity-75 bg-opacity-90 p-6 [&:hover_.icons-wrapper]:opacity-100">
+                            <div class="flex gap-x-3 absolute right-8 text-xl icons-wrapper opacity-0 transition-opacity duration-300">
+                                <!-- <fa-icon [icon]="faPenToSquare" class="text-success-600 cursor-pointer"></fa-icon> -->
+                                <fa-icon [icon]="faTrash" class="text-danger-600 cursor-pointer"></fa-icon>
+                            </div>
+                            <div class="mb-7">
+                                <div class="text-dark">
+                                    <div class="relative mb-3 w-fit" data-te-input-wrapper-init>
+                                        <input
+                                            data-te-input-showcounter="true"
+                                            maxlength="64"
+                                            type="text"
+                                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                            id="exampleFormControlInput1"
+                                            placeholder="Your experience title.."
+                                        />
+                                        <label
+                                            for="exampleFormControlInput1"
+                                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                                        >
+                                            Title
+                                        </label>
+                                        <div
+                                            class="absolute w-full text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary"
+                                            data-te-input-helper-ref
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-x-3 text-dark text-opacity-60 text-sm">
+                                <div>
+                                    <div class="experienceFromDatePicker relative mb-3" data-te-input-wrapper-init>
+                                        <input
+                                            type="text"
+                                            id="experienceFromDatePicker"
+                                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                            placeholder="Select a date"
+                                        />
+                                        <label
+                                            for="floatingInput"
+                                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                                        >
+                                            From
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="pb-4 font-semibold">-</div>
+                                <div>
+                                    <div class="experienceToDatePicker relative mb-3" data-te-input-wrapper-init>
+                                        <input
+                                            type="text"
+                                            id="experienceToDatePicker"
+                                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                            placeholder="Empty for ongoing expe.."
+                                        />
+                                        <label
+                                            for="floatingInput"
+                                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                                        >
+                                            To
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <div>
+                                    <div class="relative mb-3" data-te-input-wrapper-init>
+                                        <textarea
+                                            data-te-input-showcounter="true"
+                                            maxlength="512"
+                                            [rows]="5"
+                                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                            id="exampleFormControlTextarea1"
+                                            rows="3"
+                                            placeholder="Your education or work experience description.."
+                                        ></textarea>
+                                        <label
+                                            for="exampleFormControlTextarea12"
+                                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                                            >Describe Your Experience</label
+                                        >
+                                        <div
+                                            class="absolute w-full text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary"
+                                            data-te-input-helper-ref
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="flex justify-end items-center gap-x-4 col-span-12">
+                    <fa-icon
+                        data-te-ripple-init
+                        data-te-ripple-color="dark"
+                        [icon]="faCirclePlus"
+                        class="text-3xl w-[30px] h-[30px] flex justify-center items-center cursor-pointer text-dark text-opacity-70 hover:text-opacity-90 transition-colors duration-300 rounded-full"
+                    ></fa-icon>
+                </div>
+                <!-- Experiences -->
+            </div>
+        </div>
+    </div>
+    <!-- Profile Details -->
+</div>
+
+<!-- Modal -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="exampleModalNonInvasive"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Confirm Profile Update </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref> Are you sure you want to proceed with the profile update? </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    class="ml-1 inline-block rounded bg-danger-600 hover:bg-danger-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div
+                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status"
+                    >
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
+                    </div>
+                    Confirm Update
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+<!-- Modal -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="addNewExperience"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Add Your Education Or Experiences </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto py-4 px-6" data-te-modal-body-ref>
+                <div class="text-sm mb-3 text-dark text-opacity-75">
+                    Please fill in the following details to add your education or work experience. Indicate the title, duration, and description for the respective
+                    experience or qualification. Leave the 'To' field empty if the experience or education is ongoing.
+                </div>
+
+                <div class="relative mb-3" data-te-input-wrapper-init>
+                    <input
+                        type="text"
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        id="exampleFormControlInput1"
+                        placeholder="Example label"
+                    />
+                    <label
+                        for="exampleFormControlInput1"
+                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >
+                        Title
+                    </label>
+                </div>
+
+                <div #experienceFromDatePicker class="relative mb-3" data-te-input-wrapper-init>
+                    <input
+                        type="text"
+                        id="experienceFromDatePicker"
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        placeholder="Select a date"
+                    />
+                    <label
+                        for="floatingInput"
+                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >
+                        From
+                    </label>
+                </div>
+
+                <div #experienceToDatePicker class="relative mb-3" data-te-input-wrapper-init>
+                    <input
+                        type="text"
+                        id="experienceToDatePicker"
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        placeholder="Select a date (leave blank for ongoing education/work)"
+                    />
+                    <label
+                        for="floatingInput"
+                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >
+                        To
+                    </label>
+                </div>
+
+                <div class="relative mb-3" data-te-input-wrapper-init>
+                    <textarea
+                        [rows]="5"
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                        placeholder="Your message"
+                    ></textarea>
+                    <label
+                        for="exampleFormControlTextarea12"
+                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >Example textarea</label
+                    >
+                </div>
+            </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    class="ml-1 inline-block rounded bg-danger-600 hover:bg-danger-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div
+                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status"
+                    >
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
+                    </div>
+                    Confirm Update
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+<!-- Modal - Account Status Description -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="accountStatusDescModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Account Status </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                We regret to inform you that your account approval request has been rejected by the administration. To resolve this issue, we kindly ask you to retry
+                sending the approval request by ensuring that all required information is accurate and up-to-date. If you have any questions or concerns, please contact
+                our support team for assistance. We apologize for any inconvenience and appreciate your cooperation in getting your account approved. Thank you for
+                choosing our platform.
+            </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Download Your Documents
+                </button>
+                <button
+                    type="button"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                    class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    OK, I understand.
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Send Account Approval Request -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="sendAccountApprovalRequestModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Account Approval Request </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                <div class="mb-2 text-sm flex flex-col gap-y-2">
+                    <div
+                        >To expedite the approval process for your account, please upload PDF copies of your degree and other relevant certificates. You can upload a
+                        maximum of 5 PDFs, and each PDF should not exceed 5 MB in size.</div
+                    >
+                    <div
+                        >Ensure that the documents are clear, legible, and contain all necessary information for verification. This step is crucial for our administration
+                        to review and approve your account promptly.</div
+                    >
+                    <div
+                        >Please note that providing accurate and complete information will help streamline the approval process. If you encounter any difficulties or have
+                        questions, feel free to reach out to our support team for assistance.</div
+                    >
+                    <div>Thank you for your cooperation, and we appreciate your commitment to ensuring a smooth onboarding process.</div>
+                </div>
+                <div>
+                    <div>
+                        <div class="mb-3">
+                            <label for="formFileMultiple" class="mb-1 inline-block text-neutral-700 dark:text-neutral-200">Select Your PDF Files</label>
+                            <input
+                                class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+                                type="file"
+                                id="formFileMultiple"
+                                multiple
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                    class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Submit Request
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

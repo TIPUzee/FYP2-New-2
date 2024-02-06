@@ -1,0 +1,238 @@
+<div class="main workspace">
+    <div class="text-dark text-opacity-80">
+        <div class="inner-container mx-auto">
+            <div class="profile-cover">
+                <div class="h-[150px]"></div>
+            </div>
+            <div class="profile-img">
+                <div class="flex items-center flex-col gap-y-2 -mt-36">
+                    <img
+                        alt="" class="w-[180px] object-cover aspect-square rounded-full shadow-lg ring ring-dark"
+                        src="assets/img/3d-profile.jpg"
+                    />
+                    <div class="text-dark font-semibold text-2xl">{{ profileFullName }}</div>
+                </div>
+            </div>
+            <div class="mt-4"></div>
+            <div class="mb-3 mt-3 bg-primary-100 bg-opacity-90 rounded-lg shadow-lg px-10 py-14 max-w-[400px] mx-auto">
+                <div class="mb-4">
+                    <div class="relative" data-te-input-wrapper-init="">
+                        <input
+                            #fullNameInput (keyup)="patient.changeFullName(fullNameInput.value)"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-dark data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            data-te-placement="left" data-te-toggle="tooltip" id="exampleFormControlInputEmail"
+                            placeholder="John" title="Prefer to use your real good name please." type="email"
+                            value="{{ profileFullName }}"
+                        />
+                        <label
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
+                            for="exampleFormControlInputEmail" style="margin-left: 0"
+                        >
+                            Full Name
+                        </label>
+                        <div
+                            class="group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none"
+                            data-te-input-notch-ref=""
+                        >
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-leading-ref="" style="width: 9px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-middle-ref="" style="width: 67px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-trailing-ref=""
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div #dobInput class="relative mb-3" data-te-input-wrapper-init id="patient-profile-dob">
+                        <input
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-blue-600 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            data-te-placement="left" data-te-toggle="tooltip" placeholder="Select a date"
+                            title="Prefer to use your real date of birth for better consultations." type="text"
+                        />
+                        <label
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
+                            for="floatingInput"
+                        >Date of birth
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="relative" data-te-input-wrapper-init="">
+                        <input
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-dark !data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            data-te-placement="left" data-te-toggle="tooltip" id="exampleFormControlInputEmail"
+                            placeholder="+923012345678" title="Prefer to use your Professional WhatsApp Contact Number."
+                            type="text"
+                        />
+                        <label
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
+                            for="exampleFormControlInputEmail" style="margin-left: 0"
+                        >
+                            WhatsApp Number
+                        </label>
+                        <div
+                            class="group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none"
+                            data-te-input-notch-ref=""
+                        >
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-leading-ref="" style="width: 9px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-middle-ref="" style="width: 40px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-trailing-ref=""
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end -mt-3 mb-4">
+                    <span
+                        class="block ms-auto text-dark text-opacity-70 hover:text-opacity-90 transition-colors duration-200 text-sm"
+                        href="/"
+                    >For Professional Use
+                    </span>
+                </div>
+                <div class="mb-4">
+                    <div class="relative" data-te-input-wrapper-init="">
+                        <input
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-dark data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            data-te-placement="left" data-te-toggle="tooltip" disabled id="exampleFormControlInputEmail"
+                            placeholder="john@gmail.com"
+                            title="Prefer to use your active (Professional or non Professional) email address."
+                            type="email" value="zeeshan@gmail.com"
+                        />
+                        <label
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
+                            for="exampleFormControlInputEmail" style="margin-left: 0"
+                        >
+                            Email
+                        </label>
+                        <div
+                            class="group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none"
+                            data-te-input-notch-ref=""
+                        >
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-leading-ref="" style="width: 9px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-middle-ref="" style="width: 40px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-trailing-ref=""
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="relative" data-te-input-wrapper-init="">
+                        <input
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-dark data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            data-te-placement="left" data-te-toggle="tooltip" id="exampleFormControlInputEmail"
+                            placeholder="Must include alphabets and numbers" title="Prefer to use a strong password."
+                            type="password"
+                        />
+                        <label
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
+                            for="exampleFormControlInputEmail" style="margin-left: 0"
+                        >
+                            Password
+                        </label>
+                        <div
+                            class="group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none"
+                            data-te-input-notch-ref=""
+                        >
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-leading-ref="" style="width: 9px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-middle-ref="" style="width: 71.2px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-trailing-ref=""
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="relative" data-te-input-wrapper-init="">
+                        <input
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-dark data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInputEmail" placeholder="Same as Password" type="password"
+                        />
+                        <label
+                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
+                            for="exampleFormControlInputEmail" style="margin-left: 0"
+                        >
+                            Confirm Password
+                        </label>
+                        <div
+                            class="group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none"
+                            data-te-input-notch-ref=""
+                        >
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-leading-ref="" style="width: 9px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-middle-ref="" style="width: 71.2px"
+                            ></div>
+                            <div
+                                class="pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0 border-dark border-opacity-30 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600"
+                                data-te-input-notch-trailing-ref=""
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end -mb-4">
+                    <button
+                        class="btn btn-primary-100" data-te-modal-dismiss data-te-ripple-color="light"
+                        data-te-ripple-init type="button"
+                    > Reload
+                    </button>
+                    <a
+                        (click)="notificationService.success('Profile updated.', 'Your profile was updated successfully.')"
+                        class="ms-1 btn btn-red" data-te-ripple-color="light" data-te-ripple-init type="button"
+                    > Update
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<app-modal #updateProfileModal>
+    <div title> Confirm Profile Update</div>
+    <div body> Are you sure you want to proceed with the profile update?</div>
+    <div bottom>
+        <div class="flex justify-end gap-x-1">
+            <button
+                class="btn btn-primary-100" data-te-modal-dismiss data-te-ripple-color="light" data-te-ripple-init
+                type="button"
+            > Cancel
+            </button>
+            <button
+                class="btn btn-red" data-te-ripple-color="light" data-te-ripple-init type="button"
+            > Confirm Update
+            </button>
+        </div>
+    </div>
+</app-modal>

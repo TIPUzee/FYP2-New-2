@@ -1,0 +1,288 @@
+<div class="h-full lg:relative fixed z-[1000] [&:hover_.sidebar-scrollable]:text-opacity-50">
+    <div #sidebar class="sidebar h-full relative transition-all duration-500 w-[260px] overflow-hidden">
+        <div
+            #sidebarBackdrop
+            class="fixed inset-0 bg-primary-200 bg-opacity-20 backdrop-blur-md [&.opened]:opacity-100 [&.opened]:pointer-events-auto opacity-0 pointer-events-none transition-all duration-300 lg:!pointer-events-none lg:!opacity-0"
+        ></div>
+        <div class="h-full min-w-[260px] bg-black text-white relative">
+            <div
+                class="h-[calc(100vh-81px)] overflow-y-auto sidebar-scrollable scrollbar-currentColor text-primary-100 text-opacity-30 scrollbar-small hover:text-primary-100 hover:text-opacity-50"
+            >
+                <div class="px-3 py-4">
+                    <div class="text-white text-opacity-50 text-sm font-semibold mt-2 mb-4">Admin Panel</div>
+                    <div class="flex flex-col gap-0 links-container relative">
+                        <div class="absolute top-0 left-0 right-0 h-[38px]">
+                            <a
+                                class="transition-all duration-300 bg-layer absolute left-0 w-full whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 !text-transparent pointer-events-none text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg"
+                                >.</a
+                            >
+                        </div>
+                        <a
+                            routerLink="./"
+                            [routerLinkActiveOptions]="{ exact: true }"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Analytics</a
+                        >
+                        <a
+                            routerLink="pats"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Patients</a
+                        >
+                        <a
+                            routerLink="docs"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >All Doctors</a
+                        >
+                        <a
+                            routerLink="docs-approval-req"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                        >
+                            <div class="relative w-fit">
+                                Pending Doctor Actions
+                                <span class="flicker-3 absolute top-[-2px] right-[-10px] w-[11px] aspect-square rounded-full bg-blue-600"></span>
+                            </div>
+                        </a>
+                        <a
+                            routerLink="all-appo"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >All Appointments</a
+                        >
+                        <a
+                            routerLink="comp-appo"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Completed Appointments</a
+                        >
+                        <a
+                            routerLink="active-appo"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Active Appointments</a
+                        >
+                        <a
+                            routerLink="fail-appo"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Failed Appointments</a
+                        >
+                        <a
+                            routerLink="appo-actions"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                        >
+                            <div class="relative w-fit">
+                                Pending Appointment Actions
+                                <span class="flicker-3 absolute top-[-2px] right-[-10px] w-[11px] aspect-square rounded-full bg-blue-600"></span>
+                            </div>
+                        </a>
+                        <a
+                            routerLink="appo-pays"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Appointment Payments</a
+                        >
+                        <a
+                            routerLink="doc-w-trxs"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Doctor Withdrawal Transactions</a
+                        >
+                        <a
+                            routerLink="doc-w-req"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                        >
+                            <div class="relative w-fit">
+                                Doctor Withdrawal Requests
+                                <span class="flicker-3 absolute top-[-2px] right-[-10px] w-[11px] aspect-square rounded-full bg-blue-600"></span>
+                            </div>
+                        </a>
+                        <a
+                            routerLink="pat-w-trxs"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Patient Withdrawal Transactions</a
+                        >
+                        <a
+                            routerLink="pat-w-req"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                        >
+                            <div class="relative w-fit">
+                                Patient Withdrawal Requests
+                                <span class="flicker-3 absolute top-[-2px] right-[-10px] w-[11px] aspect-square rounded-full bg-blue-600"></span>
+                            </div>
+                        </a>
+                        <a
+                            routerLink="spec"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                        >
+                            <div class="w-fit relative"> Specializations Categories </div>
+                        </a>
+                        <a
+                            routerLink="spec-disease-map"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                        >
+                            <div class="w-fit relative"> Disease Prediction Mapping </div>
+                        </a>
+                        <a
+                            routerLink="lang"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Languages</a
+                        >
+                        <a
+                            routerLink="/a/sjdflksjdf"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="relative whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Page Not Found</a
+                        >
+                    </div>
+                </div>
+                <div class="px-3 py-4">
+                    <div class="text-white text-opacity-50 text-sm font-semibold mt-2 mb-4">Useful Links</div>
+                    <div class="flex flex-col gap-0">
+                        <a
+                            routerLink=""
+                            target="_blank"
+                            class="whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Home</a
+                        >
+                        <a
+                            routerLink="/about"
+                            target="_blank"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >About Us</a
+                        >
+                        <a
+                            routerLink="/disclaimer"
+                            target="_blank"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Disclaimer</a
+                        >
+                        <a
+                            routerLink="/m/t/i"
+                            target="_blank"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Test Brain Tumor Model</a
+                        >
+                        <a
+                            routerLink="/m/d/a/i"
+                            target="_blank"
+                            [routerLinkActive]="['active', 'text-opacity-90']"
+                            class="whitespace-nowrap overflow-clip text-ellipsis align-super pt-[6px] pb-[8px] px-3 text-white text-opacity-70 hover:text-opacity-90 bg-opacity-[0.15] rounded-lg transition-colors duration-300"
+                            >Test Disease Prediction Model</a
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-0 w-full pt-2 pb-4 px-3">
+                <div>
+                    <div
+                        class="flex items-center py-3 px-3 bg-white bg-opacity-[0.15] hover:bg-opacity-25 text-white text-opacity-60 hover:text-opacity-90 rounded-lg cursor-default transition-all duration-300"
+                    >
+                        <div class="rounded-full w-[32px] shrink-0 aspect-square bg-purple-700 inline-flex justify-center items-center pb-[1px] text-lg me-2 pt-0.5"
+                            >A</div
+                        >
+                        <div class="font-semibold truncate">Admin</div>
+                        <div class="flex-grow"></div>
+                        <a
+                            data-te-toggle="modal"
+                            data-te-target="#logoutConfirmationModal"
+                            data-te-ripple-init
+                            data-te-ripple-color="light"
+                            class="inline-flex items-center text-lg cursor-pointer ps-3 pe-2 rounded-lg pt-1.5 pb-1 -mt-1.5 -mb-1"
+                        >
+                            <fa-icon [icon]="faRightFromBracket"></fa-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute top-1/2 -translate-y-1/2 -right-[24px] text-3xl !font-extrabold">
+        <div
+            #sidebarToggler
+            class="sidebar-toggler ps-2 pe-3 py-3 opacity-40 hover:opacity-100 cursor-pointer transition-all duration-300"
+            (click)="sidebar.classList.toggle('!w-0'); sidebarToggler.classList.toggle('closed'); sidebarBackdrop.classList.toggle('opened')"
+        >
+            <div class="relative">
+                <div class="top bg-black w-[4px] h-[12px] rounded-full"></div>
+                <div class="bottom bg-black w-[4px] h-[12px] rounded-full"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="logoutConfirmationModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Confirm Logout </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref> Are you sure you want to log out? </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Cancel
+                </button>
+                <a
+                    routerLink="/login"
+                    type="button"
+                    class="text-center ml-1 inline-block rounded bg-danger-600 hover:bg-danger-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div
+                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status"
+                    >
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
+                    </div>
+                    Confirm Logout
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->

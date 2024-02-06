@@ -1,0 +1,32 @@
+<div class="tw-detect-class hidden bg-danger-600"></div>
+<div class="grid grid-rows-[35px,1fr] h-full max-h-full">
+    <div class="font-semibold text-lg mb-3">Current Session Notifications</div>
+    <div class="max-h-full overflow-y-auto h-full pe-6 overscroll-contain">
+        <div
+            #notificationElement
+            (click)="notificationElement.classList.toggle('open'); closable.classList.toggle('!grid-rows-[1fr]')"
+            *ngFor="let notification of notifications.reverse()" [ngClass]="{'bg-success-600':
+                notification.type === 'success', 'bg-danger-600': notification.type === 'error'}"
+            class="rounded-md shadow-md px-3 py-2 text-white mb-2 group/notificationElement cursor-pointer select-none"
+        >
+            <div class="text-base flex justify-between items-center transition-all duration-300">
+                <span>
+                    {{ notification.message }}
+                </span>
+                <span>
+                    <fa-icon [icon]="faAngleDown"></fa-icon>
+                </span>
+            </div>
+            <div #closable class="grid grid-rows-[0fr] transition-all duration-300">
+                <div class="overflow-hidden">
+                    <div class="text-base">
+                        {{ notification.description }}
+                    </div>
+                    <div class="flex justify-end text-sm">
+                        {{ notification.time }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

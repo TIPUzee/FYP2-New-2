@@ -1,0 +1,531 @@
+<div class="main workspace">
+    <div>
+        <div>
+            <div class="text-dark text-2xl font-semibold mb-4 flex justify-between items-end"
+                >Paid & Pending Appointments <div class="text-dark text-opacity-70 font-normal text-base pe-4">20 in total</div>
+            </div>
+            <div>
+                <div>
+                    <ng-container *ngFor="let i of commonService.range(0, 3)">
+                        <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-xl p-6 mb-8 mt-6">
+                            <div class="relative">
+                                <div class="absolute -top-[38px] left-0 bg-green-500 text-white px-3 pt-1 pb-0.5 rounded shadow text-sm">Today</div>
+                                <div class="profile-img mb-2">
+                                    <div class="flex ps-0">
+                                        <div class="flex items-start flex-col justify-center gap-y-0">
+                                            <div class="text-dark font-semibold text-xl flex justify-center">John Wich</div>
+                                            <div>WhatsApp Contact: <a href="https://wa.me/+923016689804" target="_blank" class="underline">+92 301 2345 678</a></div>
+                                            <div>Age: 28</div>
+                                            <!-- <div class="-mt-2 mb-2"><app-rating-stars></app-rating-stars></div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:absolute right-0 top-0 text-dark text-opacity-40">Appointment Number: 853</div>
+                                <div>Requested Date: 12:12 AM - 01/01/2001</div>
+                                <div>Meeting Time: Monday - 10AM to 11AM - 02/01/2001</div>
+                                <!-- <div>Status: Accepted</div> -->
+                                <div class="sm:absolute right-0 bottom-0">
+                                    <a
+                                        #expandableToggler
+                                        type="button"
+                                        (click)="expandable.classList.add('!grid-rows-[1fr]'); expandableToggler.classList.add('hidden')"
+                                        data-te-ripple-init
+                                        data-te-ripple-color="light"
+                                        class="mt-2 cursor-pointer shake-top text-center block w-fit rounded bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                    >
+                                        More Details
+                                    </a>
+                                </div>
+                                <div #expandable class="grid grid-rows-[0fr] transition-all duration-500 ease-in-out">
+                                    <div class="overflow-hidden pb-3">
+                                        <div class="mt-2">
+                                            <div class="">Patient's Symptoms Description:</div>
+                                            <div class="relative mb-3" data-te-input-wrapper-init>
+                                                <textarea
+                                                    readonly
+                                                    placeholder="Your message"
+                                                    [rows]="6"
+                                                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="3"
+                                                >
+I've been experiencing intermittent headaches accompanied by visual disturbances over the past few weeks. Additionally, I've noticed occasional bouts of nausea and dizziness, particularly in the mornings. These symptoms have been concerning, prompting me to seek an appointment for a thorough evaluation and guidance on potential causes. I'm eager to discuss these symptoms further with a healthcare professional to gain insight into their underlying causes and explore possible treatment options. </textarea
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 hidden">
+                                            <div class="">Your Report</div>
+                                            <div class="relative mb-3" data-te-input-wrapper-init>
+                                                <textarea
+                                                    placeholder="Your message"
+                                                    [rows]="6"
+                                                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="3"
+                                                ></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 hidden">
+                                            <div class="">Patient's Review Reviews</div>
+                                            <div class="relative mb-3" data-te-input-wrapper-init>
+                                                <textarea
+                                                    placeholder="Post Your Review"
+                                                    [rows]="5"
+                                                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="3"
+                                                ></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-end items-center gap-x-3">
+                                            <button
+                                                type="button"
+                                                (click)="expandable.classList.remove('!grid-rows-[1fr]'); expandableToggler.classList.remove('hidden')"
+                                                class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                                                data-te-modal-dismiss
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                            >
+                                                Less Details
+                                            </button>
+                                            <a
+                                                type="button"
+                                                data-te-toggle="modal"
+                                                data-te-target="#cancelAppointmentConfirmationModal"
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                                class="transition-all cursor-pointer text-center block w-fit rounded bg-danger-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-danger-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                            >
+                                                Cancel Appointment
+                                            </a>
+                                            <a
+                                                type="button"
+                                                data-te-toggle="modal"
+                                                data-te-target="#patientDidntJoinSubmitModal"
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                                class="cursor-pointer text-center block w-fit rounded bg-lime-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-lime-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                            >
+                                                Patient Didn't Join
+                                            </a>
+                                            <a
+                                                type="button"
+                                                data-te-toggle="modal"
+                                                data-te-target="#doctorCouldNotJoinConfirmationModal"
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                                class="cursor-pointer text-center block w-fit rounded bg-orange-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-orange-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                            >
+                                                I Could Not Join
+                                            </a>
+                                            <a
+                                                type="button"
+                                                data-te-toggle="modal"
+                                                data-te-target="#sendAppointmentDelayMessageConfirmationModal"
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                                class="cursor-pointer text-center block w-fit rounded bg-yellow-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-yellow-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                            >
+                                                Ask To Delay
+                                            </a>
+                                            <a
+                                                type="button"
+                                                data-te-toggle="modal"
+                                                data-te-target="#exampleModalNonInvasive"
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                                class="cursor-pointer shake-top text-center block w-fit rounded bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                            >
+                                                Mark As completed
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Completed Appointment Report -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="exampleModalNonInvasive"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Completed Appointment Report </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                <div class="mb-2">
+                    <div class="text-sm text-dark text-opacity-70">
+                        Help us ensure comprehensive care! Please provide a brief report summarizing the patient's current health status and any notable changes observed
+                        during the appointment. Your insights are invaluable for the patient's ongoing care. Thank you for your diligence!
+                    </div>
+                </div>
+                <div class="mb-7">
+                    <div class="">Your Report</div>
+                    <div class="relative" data-te-input-wrapper-init>
+                        <textarea
+                            placeholder="Your report on patient's health"
+                            [rows]="6"
+                            data-te-input-showcounter="true"
+                            maxlength="768"
+                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlTextarea1"
+                            rows="3"
+                        ></textarea>
+                        <div
+                            class="absolute w-full text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary"
+                            data-te-input-helper-ref
+                        ></div>
+                    </div>
+                </div>
+                <div class="mb-7">
+                    <div class=""> Appointment Secret Code </div>
+                    <div class="relative" data-te-input-wrapper-init>
+                        <input
+                            type="text"
+                            class="tracking-widest peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                            id="exampleFormControlInputHelper"
+                            placeholder="e.g. 00000"
+                        />
+                        <div
+                            class="absolute w-full text-end text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary"
+                            data-te-input-helper-ref
+                        >
+                            Patient's appointment code
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div
+                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status"
+                    >
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
+                    </div>
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Patient Didn't Join -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="patientDidntJoinSubmitModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Confirmation of Patient's Absence </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                <div class="text-sm mb-3">
+                    To validate the patient's absence from the scheduled appointment, please provide two clear video recordings of your attempt to connect with the
+                    patient via WhatsApp. Each video should not exceed 20MB in size. Ensure that your recordings do not display other contacts for privacy reasons.
+                    <span class="text-dark font-semibold text-base"> These videos will also be shared with the patient to verify the situation. </span>
+                    <span
+                        >Note that if the videos contain other contacts or do not sufficiently display your attempt to contact the patient, the request may be rejected.
+                        For further information, kindly review the <a routerLink="/terms-and-conditions" target="_blank" class="underline">terms and conditions</a>.</span
+                    >
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <label for="formFile1" class="mb-1 inline-block text-neutral-700 dark:text-neutral-200">Video File - Attempt 1</label>
+                        <input
+                            class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+                            type="file"
+                            id="formFile1"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile2" class="mb-1 inline-block text-neutral-700 dark:text-neutral-200">Video File - Attempt 2</label>
+                        <input
+                            class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+                            type="file"
+                            id="formFile2"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Close
+                </button>
+                <a
+                    type="button"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                    data-te-modal-dismiss
+                    class="ms-1 cursor-pointer text-center block w-fit rounded bg-lime-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-lime-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                >
+                    Submit Request
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Doctor Could Not Join -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="doctorCouldNotJoinConfirmationModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Confirmation of Your Absence </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                <div class="">
+                    <div> Are you confirming that you were unable to join the appointment meeting? </div>
+                    <div class="text-sm mt-2">
+                        Please proceed only if you are certain. Kindly review the
+                        <a routerLink="/terms-and-conditions" target="_blank" class="underline">terms and conditions</a> before proceeding with this action.
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Cancel
+                </button>
+                <a
+                    type="button"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                    data-te-modal-dismiss
+                    class="ms-1 cursor-pointer text-center block w-fit rounded bg-orange-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-orange-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                >
+                    Confirm My Absence
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Appointment Delay -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="sendAppointmentDelayMessageConfirmationModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Confirm Appointment Delay </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                <div> Are you sure you want to delay this appointment? </div>
+                <div class="text-sm mt-2">
+                    Please proceed only if you are certain. Kindly review the
+                    <a routerLink="/terms-and-conditions" target="_blank" class="underline">terms and conditions</a> before proceeding with this action.
+                </div>
+            </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Cancel Action
+                </button>
+                <button
+                    type="button"
+                    class="ml-1 inline-block rounded bg-yellow-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-yellow-500 transition duration-150 ease-in-out hover:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-600 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div
+                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status"
+                    >
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
+                    </div>
+                    Delay Appointment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Cancel Appointment -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="cancelAppointmentConfirmationModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Confirm Appointment Cancellation </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                Are you sure you want to cancel this appointment?
+                <div class="mt-3 text-sm">
+                    <span>Please read </span> <a href="/terms-and-conditions" target="_blank" class="underline text-blue-600">Terms & Conditions</a> before cancelling
+                    this appointment.
+                </div>
+            </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Keep Appointment
+                </button>
+                <button
+                    type="button"
+                    class="ms-1 transition-all cursor-pointer text-center block w-fit rounded bg-danger-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-danger-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal duration-150 ease-in-out focus:outline-none focus:ring-0"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div
+                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status"
+                    >
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
+                    </div>
+                    Cancel Appointment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

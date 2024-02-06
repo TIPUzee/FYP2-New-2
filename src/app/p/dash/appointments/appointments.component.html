@@ -1,0 +1,307 @@
+<div class="main workspace">
+    <div>
+        <div>
+            <div class="text-dark text-2xl font-semibold mb-4">Appointments</div>
+            <div>
+                <div>
+                    <ng-container *ngFor="let i of commonService.range(0, 3)">
+                        <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-xl p-6 mb-6 mt-20">
+                            <div class="relative">
+                                <div class="profile-img mb-2">
+                                    <div class="flex -mt-16 ps-0">
+                                        <div class="flex items-center flex-col gap-y-2">
+                                            <div class="relative">
+                                                <img
+                                                    src="assets/img/doctor-2.jpeg"
+                                                    alt=""
+                                                    class="w-[140px] object-cover aspect-square rounded-full shadow-lg ring ring-dark"
+                                                />
+                                                <a routerLink="/p/doctor" class="opacity-0 absolute inset-0 rounded-full"></a>
+                                            </div>
+                                            <a routerLink="/p/doctor" class="block text-dark font-semibold text-xl">Dr. David Patil</a>
+                                            <!-- <div class="-mt-2 mb-2"><app-rating-stars></app-rating-stars></div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:absolute right-0 top-14 text-dark text-opacity-40">Appointment Number: 853</div>
+                                <div>Requested Date: 12:12 AM - 01/01/2001</div>
+                                <div>Meeting Time: In between from 10AM to 12PM</div>
+                                <div>
+                                    Meeting Secret Code: 18864
+                                    <span
+                                        class="cursor-pointer text-xl ms-1"
+                                        data-te-ripple-init
+                                        data-te-ripple-color="light"
+                                        (click)="secretCodeDescriptionModal.open()"
+                                    >
+                                        <fa-icon [icon]="faCircleQuestion" class="pointer-events-none"></fa-icon>
+                                    </span>
+                                </div>
+                                <div>
+                                    Status: Cancelled by the system
+                                    <span
+                                        class="cursor-pointer text-xl ms-1"
+                                        data-te-ripple-init
+                                        data-te-ripple-color="light"
+                                        (click)="appointmentStatusDescriptionModal.open()"
+                                    >
+                                        <fa-icon [icon]="faCircleQuestion" class="pointer-events-none"></fa-icon>
+                                    </span>
+                                </div>
+                                <div class="sm:absolute right-0 bottom-0">
+                                    <a
+                                        #expandableToggler
+                                        type="button"
+                                        (click)="expandable.classList.add('!grid-rows-[1fr]'); expandableToggler.classList.add('!hidden')"
+                                        data-te-ripple-init
+                                        data-te-ripple-color="light"
+                                        class="shake-top mt-2 btn btn-blue btn-shadow"
+                                    >
+                                        More Details
+                                    </a>
+                                </div>
+                                <div #expandable class="grid grid-rows-[0fr] transition-all duration-700 ease-in-out">
+                                    <div class="overflow-hidden">
+                                        <div class="mt-2">
+                                            <div class="">Your Symptoms Description:</div>
+                                            <div class="relative mb-3" data-te-input-wrapper-init>
+                                                <textarea
+                                                    readonly
+                                                    placeholder="Your message"
+                                                    [rows]="6"
+                                                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="3"
+                                                >
+I've been experiencing intermittent headaches accompanied by visual disturbances over the past few weeks. Additionally, I've noticed occasional bouts of nausea and dizziness, particularly in the mornings. These symptoms have been concerning, prompting me to seek an appointment for a thorough evaluation and guidance on potential causes. I'm eager to discuss these symptoms further with a healthcare professional to gain insight into their underlying causes and explore possible treatment options.</textarea
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <div class="">Doctor's Report</div>
+                                            <div class="relative mb-3" data-te-input-wrapper-init>
+                                                <textarea
+                                                    readonly
+                                                    placeholder="Your message"
+                                                    [rows]="6"
+                                                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="3"
+                                                >
+Patient presented with recurring headaches, visual disturbances, and episodes of nausea and dizziness. Suspected vestibular migraine; advised further tests and prescribed medications for symptom management.</textarea
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <div class="">Your Reviews</div>
+                                            <div class="relative mb-8" data-te-input-wrapper-init>
+                                                <textarea
+                                                    data-te-input-showcounter="true"
+                                                    maxlength="512"
+                                                    placeholder="Post Your Review"
+                                                    [rows]="5"
+                                                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="3"
+                                                ></textarea>
+                                                <div
+                                                    class="absolute w-full text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary"
+                                                    data-te-input-helper-ref
+                                                ></div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <div class="py-4 px-6 border border-current rounded-md">
+                                                <div class="font-semibold mb-2 text-warning-600 text-opacity-100"
+                                                    >Your Appointment has been delayed by Dr. David Patil. Please reschedule your appointment!
+                                                    <div class="font-normal text-dark text-opacity-75"
+                                                        >But you can certainly cancel your appointment and the refund will be done according to the
+                                                        <a routerLink="/terms-and-conditions" target="_blank" class="underline text-blue-600">Term and Conditions</a> of
+                                                        the system!</div
+                                                    >
+                                                </div>
+                                                <div class="font-semibold mb-2 text-warning-600 text-opacity-100"
+                                                    >Sorry for inconsistency, but Dr. David Patil could not join the meeting. Please reschedule your appointment!
+                                                    <div class="font-normal text-dark text-opacity-75"
+                                                        >But you can certainly cancel your appointment and the refund will be done according to the
+                                                        <a routerLink="/terms-and-conditions" target="_blank" class="underline text-blue-600">Term and Conditions</a> of
+                                                        the system!</div
+                                                    >
+                                                </div>
+                                                <div class="font-semibold mb-2 text-warning-600 text-opacity-100"
+                                                    >Sorry! Your appointment has time slot clashed with the other patient. Please reschedule your appointment!
+                                                    <div class="font-normal text-dark text-opacity-75"
+                                                        >But you can certainly cancel your appointment and the refund will be done according to the
+                                                        <a routerLink="/terms-and-conditions" target="_blank" class="underline text-blue-600">Term and Conditions</a> of
+                                                        the system!</div
+                                                    >
+                                                </div>
+                                                <div class="">Select Your Appointment Week</div>
+                                                <div class="flex justify-start flex-wrap">
+                                                    <ng-container *ngFor="let week of ['Current Week', 'Next Week', 'Week After Next']; let j = index">
+                                                        <div class="mb-[0.125rem] mr-4 inline-block min-h-[1.5rem] pl-[1.5rem]">
+                                                            <input
+                                                                class="relative float-left -ml-[1.5rem] block mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                                                type="radio"
+                                                                name="weekSelectorRadio"
+                                                                id="weekSelectorRadio{{ j }}"
+                                                                value="weekSelectorRadio{{ j }}"
+                                                                [checked]="j == 0"
+                                                            />
+                                                            <label
+                                                                class="mt-px -ms-2 ps-3 inline-block pl-[0.15rem] hover:cursor-pointer"
+                                                                for="weekSelectorRadio{{ j }}"
+                                                                >{{ week }}</label
+                                                            >
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                                <div class="mt-3">Select Your Appointment Slot</div>
+                                                <div class="flex flex-col justify-start flex-wrap mt-1">
+                                                    <ng-container
+                                                        *ngFor="
+                                                            let slot of [
+                                                                'Monday - Around 3PM to 4PM (01/01/2000)',
+                                                                'Tueday - Around 1PM to 2PM (02/01/2000)',
+                                                                'Thursday - Around 11AM to 12PM (04/01/2000)'
+                                                            ];
+                                                            let i = index
+                                                        "
+                                                    >
+                                                        <div class="mb-[0.125rem] mr-4 inline-block min-h-[1.5rem] pl-[1.5rem]">
+                                                            <input
+                                                                class="relative float-left -ml-[1.5rem] block mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                                                type="radio"
+                                                                name="slotSelectorRadio"
+                                                                id="slotSelectorRadio{{ i }}"
+                                                                value="slotSelectorRadio{{ i }}"
+                                                                [checked]="i == 0"
+                                                            />
+                                                            <label
+                                                                class="mt-px -ms-2 ps-3 inline-block pl-[0.15rem] hover:cursor-pointer"
+                                                                for="slotSelectorRadio{{ i }}"
+                                                                >{{ slot }}</label
+                                                            >
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-end items-center gap-x-3 mb-3">
+                                            <button
+                                                type="button"
+                                                (click)="expandable.classList.remove('!grid-rows-[1fr]'); expandableToggler.classList.remove('!hidden')"
+                                                class="btn btn-primary-100"
+                                                data-te-modal-dismiss
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                            >
+                                                Less Details
+                                            </button>
+                                            <div><app-rating-stars></app-rating-stars></div>
+                                            <a
+                                                type="button"
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                                class="btn btn-blue btn-shadow"
+                                                (click)="postReviewConfirmationModal.open()"
+                                            >
+                                                Submit Reviews
+                                            </a>
+                                            <a
+                                                type="button"
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                                class="btn btn-yellow btn-shadow"
+                                                (click)="rescheduleAppointmentConfirmationModal.open()"
+                                            >
+                                                Reschedule Appointment
+                                            </a>
+                                            <a
+                                                type="button"
+                                                data-te-ripple-init
+                                                data-te-ripple-color="light"
+                                                class="btn btn-red btn-shadow"
+                                                (click)="cancelAppointmentConfirmationModal.open()"
+                                            >
+                                                Cancel Appointment
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal #postReviewConfirmationModal>
+    <div title>Confirm Review Submission</div>
+    <div body>Are you sure you want to submit your reviews and rating?</div>
+    <div bottom>
+        <div class="flex justify-end gap-x-1">
+            <button type="button" class="btn btn-primary-100" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light"> Cancel </button>
+            <button type="button" class="btn btn-blue btn-shadow" data-te-ripple-init data-te-ripple-color="light"> Submit </button>
+        </div>
+    </div>
+</app-modal>
+
+<app-modal #cancelAppointmentConfirmationModal>
+    <div title>Confirm Appointment Cancellation</div>
+    <div body>Are you sure you want to cancel this appointment?</div>
+    <div bottom>
+        <div class="flex justify-end gap-x-1">
+            <button type="button" class="btn btn-primary-100" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light"> Keep Appointment </button>
+            <button type="button" class="btn btn-red btn-shadow" data-te-ripple-init data-te-ripple-color="light"> Cancel Appointment </button>
+        </div>
+    </div>
+</app-modal>
+
+<app-modal #rescheduleAppointmentConfirmationModal>
+    <div title>Confirm Appointment Reschedule</div>
+    <div body>Are you sure you want to reschedule this appointment to Monday - Around 3PM to 4PM (01/01/2000)?</div>
+    <div bottom>
+        <div class="flex justify-end gap-x-1">
+            <button type="button" class="btn btn-primary-100" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light"> No </button>
+            <button type="button" class="btn btn-yellow btn-shadow" data-te-ripple-init data-te-ripple-color="light"> Reschedule </button>
+        </div>
+    </div>
+</app-modal>
+
+<app-modal #secretCodeDescriptionModal>
+    <div title>Purpose of Secret Code</div>
+    <div body>
+        <span class="text-dark font-semibold"> This code is meant to be shared with your doctor, after the meeting is concluded. </span>
+        Its primary purpose is to provide confirmation that our consultation took place as scheduled, ensuring accuracy and trust in our appointment record. It acts as an
+        assurance that the meeting indeed occurred, ensuring transparency and credibility in our healthcare interaction.
+        <div class="text-dark font-semibold text-base"> Do not share this code until the appointment has concluded! </div>
+        <span
+            >Sharing the code before the appointment meeting, may impact the
+            <a routerLink="/terms-and-conditions" target="_blank" class="underline">refund policy</a>.</span
+        >
+    </div>
+    <div bottom>
+        <div class="flex justify-end gap-x-1">
+            <button type="button" class="btn btn-blue btn-shadow" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light"> OK, I understand. </button>
+        </div>
+    </div>
+</app-modal>
+
+<app-modal #appointmentStatusDescriptionModal>
+    <div title>Appointment Status</div>
+    <div body>
+        The appointment has been canceled as the meeting was initiated by the doctor, but unfortunately, the patient didn't join.
+        <span class="text-dark font-semibold"> Please note that in such cases, no refunds will be issued, </span>
+        and rescheduling this appointment isn't possible. To book a new appointment, kindly initiate the process once again. We apologize for any inconvenience and
+        encourage scheduling a new appointment at your convenience to avail of our services.
+        <span>For more information, please read our <a routerLink="/terms-and-conditions" target="_blank" class="underline">refund policy</a>.</span>
+    </div>
+    <div bottom>
+        <div class="flex justify-end gap-x-1">
+            <button type="button" class="btn btn-blue btn-shadow" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light"> OK, I understand. </button>
+        </div>
+    </div>
+</app-modal>

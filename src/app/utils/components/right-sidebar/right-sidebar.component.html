@@ -1,0 +1,20 @@
+<div
+    [ngClass]="{ 'right-[-350px]': !open, 'right-0': open, }"
+    class="fixed w-[350px] h-full bg-slate-200 shadow-2xl transition-all duration-300 z-50"
+>
+    <div (click)="open = !open" class="absolute top-[4px] right-[6px] cursor-pointer">
+        <fa-icon [icon]="faCircleXmark" class="text-2xl"></fa-icon>
+    </div>
+
+    <div class="pt-5 ps-6">
+        <div class="h-[calc(100vh-25px)]">
+            <app-notifications-container></app-notifications-container>
+        </div>
+    </div>
+
+    <div [ngClass]="{'hidden': open}" class="absolute top-[0px] -left-[38px] text-3xl !font-extrabold shake-top">
+        <div (click)="open = !open" class="cursor-pointer">
+            <fa-icon [icon]="faBell" class="text-xl"></fa-icon>
+        </div>
+    </div>
+</div>

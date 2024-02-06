@@ -1,0 +1,400 @@
+<div class="main workspace">
+    <div>
+        <div>
+            <div class="text-dark text-2xl font-semibold mb-4 flex justify-between items-end"
+                >Transactions <div class="text-dark text-opacity-70 font-normal text-base pe-4"></div>
+            </div>
+            <div>
+                <div>
+                    <div class="flex justify-end font-normal">
+                        <a
+                            routerLink="/d/withdraw"
+                            class="cursor-pointer bg-primary-600 hover:bg-primary-700 transition-colors duration-300 text-primary-100 px-4 pt-2 pb-1.5 rounded shadow-md me-2"
+                            >Withdraw Amount</a
+                        >
+                        <div class="cursor-default bg-success-600 text-primary-100 px-4 pt-2 pb-1.5 rounded shadow-md border border-primary-100 border-opacity-50"
+                            >Total Amount in Wallet: Rs. 5500</div
+                        >
+                    </div>
+                    <ng-container *ngFor="let i of commonService.range(0, 3)">
+                        <ng-container *ngIf="i % 2 == 0">
+                            <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-xl p-6 mb-0 mt-6 border-s-[6px] border-e-4 border-success-600">
+                                <div class="relative">
+                                    <div class="profile-img mb-2">
+                                        <div class="flex ps-0">
+                                            <div class="flex items-start flex-col justify-center gap-y-0">
+                                                <div class="text-dark font-semibold text-xl flex justify-center">Deposited Rs. 1900</div>
+                                                <div class="flex justify-center">Paid By Patient: 2000</div>
+                                                <div class="flex justify-center">Tax: 100</div>
+                                                <div class="flex justify-center">Patient: John Wich</div>
+                                                <div class=""
+                                                    >WhatsApp Contact: <a href="https://wa.me/+923016689804" target="_blank" class="underline">+92 301 2345 678</a></div
+                                                >
+                                                <div>Age: 28</div>
+                                                <!-- <div class="-mt-2 mb-2"><app-rating-stars></app-rating-stars></div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sm:absolute right-0 top-0 text-dark text-opacity-40 flex gap-x-3">
+                                        <app-rating-stars></app-rating-stars> Transaction Number: 853
+                                    </div>
+                                    <div class="">Appointment Number: 452</div>
+                                    <div>Requested Date: 12:12 AM - 01/01/2001</div>
+                                    <div class="">Meeting Time: 10AM to 11AM - 02/01/2001</div>
+                                    <!-- <div>Status: Accepted</div> -->
+                                    <div class="sm:absolute right-0 bottom-0">
+                                        <a
+                                            #expandableToggler
+                                            type="button"
+                                            (click)="expandable.classList.add('!grid-rows-[1fr]'); expandableToggler.classList.add('hidden')"
+                                            data-te-ripple-init
+                                            data-te-ripple-color="light"
+                                            class="mt-2 cursor-pointer shake-top text-center block w-fit rounded bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                        >
+                                            More Details
+                                        </a>
+                                    </div>
+                                    <div #expandable class="grid grid-rows-[0fr] transition-all duration-500 ease-in-out">
+                                        <div class="overflow-hidden pb-3">
+                                            <div class="mt-2">
+                                                <div class="">Patient's Symptoms Description:</div>
+                                                <div class="relative mb-3" data-te-input-wrapper-init>
+                                                    <textarea
+                                                        readonly
+                                                        placeholder="Your message"
+                                                        [rows]="6"
+                                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                        id="exampleFormControlTextarea1"
+                                                        rows="3"
+                                                    >
+I've been experiencing intermittent headaches accompanied by visual disturbances over the past few weeks. Additionally, I've noticed occasional bouts of nausea and dizziness, particularly in the mornings. These symptoms have been concerning, prompting me to seek an appointment for a thorough evaluation and guidance on potential causes. I'm eager to discuss these symptoms further with a healthcare professional to gain insight into their underlying causes and explore possible treatment options.</textarea
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <div class="">Your Report</div>
+                                                <div class="relative mb-3" data-te-input-wrapper-init>
+                                                    <textarea
+                                                        placeholder="Your message"
+                                                        [rows]="6"
+                                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                        id="exampleFormControlTextarea1"
+                                                        rows="3"
+                                                    >
+Patient presented with recurring headaches, visual disturbances, and episodes of nausea and dizziness. Suspected vestibular migraine; advised further tests and prescribed medications for symptom management.</textarea
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <div class="">Patient's Reviews</div>
+                                                <div class="relative mb-3" data-te-input-wrapper-init>
+                                                    <textarea
+                                                        placeholder="Post Your Review"
+                                                        [rows]="5"
+                                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                        id="exampleFormControlTextarea1"
+                                                        rows="3"
+                                                    >
+Excellent care! Dr. Smith was attentive and knowledgeable, providing clear explanations about my symptoms. The prescribed treatment significantly alleviated my discomfort. Highly recommended!</textarea
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="flex justify-end items-center gap-x-3">
+                                                <button
+                                                    type="button"
+                                                    (click)="expandable.classList.remove('!grid-rows-[1fr]'); expandableToggler.classList.remove('hidden')"
+                                                    class="inline-block rounded bg-white bg-opacity-0 hover:bg-opacity-90 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out"
+                                                    data-te-modal-dismiss
+                                                    data-te-ripple-init
+                                                    data-te-ripple-color="light"
+                                                >
+                                                    Less Details
+                                                </button>
+                                                <a
+                                                    type="button"
+                                                    data-te-toggle="modal"
+                                                    data-te-target="#rejectAppointmentConfirmationModal"
+                                                    data-te-ripple-init
+                                                    data-te-ripple-color="light"
+                                                    class="hidden cursor-pointer text-center block w-fit rounded bg-danger-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-danger-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                                >
+                                                    Reject Appointment
+                                                </a>
+                                                <a
+                                                    type="button"
+                                                    data-te-ripple-init
+                                                    data-te-ripple-color="light"
+                                                    class="hidden cursor-pointer shake-top text-center block w-fit rounded bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                                >
+                                                    Accept Appointment
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="i % 2 != 0">
+                            <div class="bg-primary-100 bg-opacity-90 rounded-lg shadow-xl p-6 mb-0 mt-6 border-s-[6px] border-e-4 border-danger-600">
+                                <div class="relative">
+                                    <div class="profile-img mb-2">
+                                        <div class="flex ps-0">
+                                            <div class="flex items-start flex-col justify-center gap-y-0">
+                                                <div class="text-dark font-semibold text-xl flex justify-center">Withdrew Rs. 4500</div>
+                                                <div class="flex justify-center">Payment/Trx ID: 25396236887</div>
+                                                <div class="flex justify-center mb-2">Withdrawal Request Title: For bike installment</div>
+                                                <div class="flex justify-center">Receiver Easypaisa Number: +923016689804</div>
+                                                <div class="flex justify-center mb-2">Receiver Easypaisa Username: Nouman Sarwar</div>
+                                                <div class="flex justify-center">Sender Easypaisa Number: +923418407300</div>
+                                                <div class="flex justify-center">Sender Easypaisa Username: Zeeshan Nadeem</div>
+                                                <!-- <div class="-mt-2 mb-2"><app-rating-stars></app-rating-stars></div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sm:absolute right-0 top-0 text-dark text-opacity-40">Transaction Number: 855</div>
+                                    <div>Requested Time: 12:12 AM - 01/01/2001</div>
+                                    <div class="">Payment Time: About 10:09AM - 02/01/2001</div>
+                                    <!-- <div>Status: Accepted</div> -->
+                                    <div class="sm:absolute right-0 bottom-0 flex gap-x-2">
+                                        <a
+                                            #expandableToggler
+                                            type="button"
+                                            (click)="transactionScreenshot.click()"
+                                            data-te-ripple-init
+                                            data-te-ripple-color="light"
+                                            class="mt-2 cursor-pointer shake-top text-center block w-fit rounded bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                        >
+                                            See Trx Screenshot
+                                        </a>
+                                        <a
+                                            #expandableToggler
+                                            type="button"
+                                            (click)="expandable.classList.add('!grid-rows-[1fr]'); expandableToggler.classList.add('hidden')"
+                                            data-te-ripple-init
+                                            data-te-ripple-color="light"
+                                            class="hidden mt-2 cursor-pointer shake-top text-center block w-fit rounded bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                        >
+                                            More Details
+                                        </a>
+                                    </div>
+                                    <div #expandable class="grid grid-rows-[0fr] transition-all duration-500 ease-in-out">
+                                        <div class="overflow-hidden pb-3">
+                                            <!-- Lightbox -->
+                                            <div data-te-lightbox-init data-te-zoom-level="0.25" class="flex flex-col space-y-5 lg:flex-row lg:space-x-5 lg:space-y-0">
+                                                <div class="h-full w-full">
+                                                    <img
+                                                        #transactionScreenshot
+                                                        src="/assets/img/"
+                                                        data-te-img="/assets/img/transaction-ss.jpeg"
+                                                        alt="AI-Disease Predictor - Transaction Screenshot - Easypaisa Number: +923016689804 - Trx ID: 25396236887"
+                                                        class="hidden w-full cursor-zoom-in data-[te-lightbox-disabled]:cursor-auto"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <!-- Lightbox -->
+                                            <div class="mt-2">
+                                                <div class="">Patient's Symptoms Description:</div>
+                                                <div class="relative mb-3" data-te-input-wrapper-init>
+                                                    <textarea
+                                                        readonly
+                                                        placeholder="Your message"
+                                                        [rows]="6"
+                                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                        id="exampleFormControlTextarea1"
+                                                        rows="3"
+                                                    >
+ I've been experiencing intermittent headaches accompanied by visual disturbances over the past few weeks. Additionally, I've noticed occasional bouts of nausea and dizziness, particularly in the mornings. These symptoms have been concerning, prompting me to seek an appointment for a thorough evaluation and guidance on potential causes. I'm eager to discuss these symptoms further with a healthcare professional to gain insight into their underlying causes and explore possible treatment options.</textarea
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <div class="">Your Report</div>
+                                                <div class="relative mb-3" data-te-input-wrapper-init>
+                                                    <textarea
+                                                        placeholder="Your message"
+                                                        [rows]="6"
+                                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                        id="exampleFormControlTextarea1"
+                                                        rows="3"
+                                                    >
+Patient presented with recurring headaches, visual disturbances, and episodes of nausea and dizziness. Suspected vestibular migraine; advised further tests and prescribed medications for symptom management.</textarea
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <div class="">Patient's Review Reviews</div>
+                                                <div class="relative mb-3" data-te-input-wrapper-init>
+                                                    <textarea
+                                                        placeholder="Post Your Review"
+                                                        [rows]="5"
+                                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-5 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                        id="exampleFormControlTextarea1"
+                                                        rows="3"
+                                                    >
+Excellent care! Dr. Smith was attentive and knowledgeable, providing clear explanations about my symptoms. The prescribed treatment significantly alleviated my discomfort. Highly recommended!</textarea
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="flex justify-end items-center gap-x-3">
+                                                <button
+                                                    type="button"
+                                                    (click)="expandable.classList.remove('!grid-rows-[1fr]'); expandableToggler.classList.remove('hidden')"
+                                                    class="inline-block rounded bg-white bg-opacity-0 hover:bg-opacity-90 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out"
+                                                    data-te-modal-dismiss
+                                                    data-te-ripple-init
+                                                    data-te-ripple-color="light"
+                                                >
+                                                    Less Details
+                                                </button>
+                                                <a
+                                                    type="button"
+                                                    data-te-toggle="modal"
+                                                    data-te-target="#rejectAppointmentConfirmationModal"
+                                                    data-te-ripple-init
+                                                    data-te-ripple-color="light"
+                                                    class="hidden cursor-pointer text-center block w-fit rounded bg-danger-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-danger-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                                >
+                                                    Reject Appointment
+                                                </a>
+                                                <a
+                                                    type="button"
+                                                    data-te-ripple-init
+                                                    data-te-ripple-color="light"
+                                                    class="hidden cursor-pointer shake-top text-center block w-fit rounded bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                                                >
+                                                    Accept Appointment
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Post Review Confirmation -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="exampleModalNonInvasive"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Confirm Review Submission </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref> Are you sure you want to submit your review and rating? </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div
+                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status"
+                    >
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
+                    </div>
+                    Post Review
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal - Post Review Confirmation -->
+
+<!-- Modal - Post Review Confirmation -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="rejectAppointmentConfirmationModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Confirm Appointment Rejection </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref> Are you sure you want to reject this appointment? </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Close
+                </button>
+                <button
+                    type="button"
+                    class="ml-1 inline-block rounded bg-danger-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-danger-700 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-danger-800 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div
+                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status"
+                    >
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
+                    </div>
+                    Reject Appointment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal - Post Review Confirmation -->

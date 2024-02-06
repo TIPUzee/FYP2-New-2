@@ -1,0 +1,67 @@
+<div class="mb-20">
+    <div class="container mx-auto">
+        <div>
+            <div class="rounded-lg shadow-lg mb-10">
+                <div class="bg-gradient-primary-300 text-primary-100 text-opacity-80 bg-opacity-80 rounded-t-[inherit] p-6 pb-3">
+                    <div class="mb-1 text-2xl font-semibold text-primary-100 text-opacity-90">Select Your Symptoms for Accurate Disease Prediction</div>
+                    <div class="text-base text-primary-100 text-opacity-80">Choose Wisely for Precise Results</div>
+                </div>
+                <div class="bg-primary-100 bg-opacity-80 rounded-b-[inherit] p-6 text-dark text-opacity-70">
+                    <div class="mb-2">In our disease prediction model, your symptoms matter. To receive the most accurate assessment, select all the symptoms you're experiencing from the provided cards below. The more precise information you provide, the more accurate and tailored your predicted disease analysis will be.</div>
+                    <div class="mb-2">Empowering you with control over your health, our platform ensures a comprehensive understanding of your symptoms. Click on the symptom cards that apply to you, aiding our AI-driven system in generating a precise prediction for your health concern.</div>
+                    <div class="mb-2">By selecting all applicable symptoms, you enable our system to provide personalized and insightful predictions, enhancing your healthcare experience. Your health is our priority, and your input makes all the difference!</div>
+                </div>
+            </div>
+            <form class="grid grid-cols-12 gap-x-6 gap-y-6 mb-11">
+                <div *ngFor="let i of commonService.range(0, 130)" class="relative [&:has(input:checked)]:shadow-[0px_44px_15px_-35px_rgba(0,0,0,0.3)] [&:has(input:checked)_.card]:bg-gradient-primary-300 [&:has(input:checked)_.img]:opacity-100 [&:has(input:checked)_.card-text]:text-primary-100 transition-shadow duration-500">
+                    <div class="p-2 bg-white bg-opacity-100 relative rounded-lg shadow-lg card">
+                        <div class="opacity-70 rounded-md relative z-0 bg-white text-dark text-opacity-70 flex justify-normal items-center img">
+                            <img src="assets/img/itching-icon.jpg" alt="" class="max-w-full rounded-md">
+                        </div>
+                    </div>
+                    <div class="p-1 mt-2 bg-white bg-opacity-100 relative rounded-lg shadow-lg card">
+                        <div class="card-text bottom-0 right-0 text-sm font-semibold text-dark text-opacity-70 ps-1">Itching</div>
+                    </div>
+                    <input type="checkbox" name="c_{{i}}" class="block absolute z-10 inset-0 cursor-pointer opacity-0 !h-full !w-full rounded-[inherit]">
+                </div>
+                <div *ngFor="let i of commonService.range(0, 130)" class="hidden relative rounded-lg shadow-lg h-full [&:has(input:checked)]:shadow-[0px_44px_15px_-35px_rgba(0,0,0,0.3)] [&:has(input:checked)_.header]:bg-gradient-secondary-300 transition-shadow duration-500">
+                    <div class="header relative z-0 bg-gradient-primary-300 text-primary-100 text-opacity-80 bg-opacity-80 rounded-t-[inherit] p-6 pb-3">
+                        <div class="mb-1 text-2xl font-semibold text-primary-100 text-opacity-90">Itching</div>
+                    </div>
+                    <div class="relative z-0 bg-primary-100 bg-opacity-80 rounded-b-[inherit] p-6 pt-5 text-dark text-opacity-70">
+                        <div class="text-base text-dark text-opacity-70">Pruritus, Scratching, Irritation</div>
+                        <div class="hidden">
+                            <div class="mb-2">- Relentless Skin Sensation</div>
+                            <div class="mb-2">It prompts an irresistible urge to scratch, varying from mild irritation to an intense feeling, often in skin-related issues or allergies.</div>
+                        </div>
+                    </div>
+                    <input type="checkbox" name="c_{{i}}" class="block absolute z-10 inset-0 cursor-pointer opacity-0 !h-full !w-full rounded-[inherit]">
+                </div>
+            </form>
+            <div class="mb-16">
+                <div class="w-full flex justify-center" id="predict-btn">
+                    <a routerLink="../r" type="button" class="w-1/2 scale-110 block shadow-lg text-xs font-light text-center rounded bg-blue-500 text-neutral-50 hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0">
+                        <div class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                            <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                                Loading...
+                            </span>
+                        </div>
+                        Predict Disease
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fixed left-0 right-0 bottom-0 pointer-events-none w-full z-[98]">
+    <div class="container mx-auto">
+        <div class="flex justify-end mb-9">
+            <a (click)="scroller.scrollToAnchor('predict-btn')" type="button" class="cursor-pointer pointer-events-auto block shadow-lg text-xs font-light text-center rounded-md bg-gradient-secondary-300 text-neutral-50  hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0">
+                Predict
+                <fa-icon [icon]="faChevronDown" class="ms-1 mb-1.5"></fa-icon>
+            </a>
+        </div>
+    </div>
+</div>
+
+=

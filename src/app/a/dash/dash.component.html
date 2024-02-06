@@ -1,0 +1,27 @@
+<div
+    class="relative flex flex-row-reverse h-screen max-h-screen bg-slate-200 [&:has(_.sidebar.closed)_.workspace-container]:w-[100vw] [&:has(_.sidebar:not(.closed))_.workspace-container]:w-[calc(100vw-260px)]"
+>
+    <ngx-loading-bar color="red" height="3px" [includeSpinner]="false"></ngx-loading-bar>
+    <div class="border border-black flex-grow relative workspace-container transition-all duration-500">
+        <div [@routeAnimations]="getRouteAnimationData()" class="relative bg-slate-200 dashboard-workspace-holder">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+    </div>
+    <app-sidebar class="relative"></app-sidebar>
+</div>
+<div class="w-0 h-0 overflow-clip">
+    <svg id="filters">
+        <defs>
+            <filter id="threshold">
+                <feColorMatrix
+                    in="SourceGraphic"
+                    type="matrix"
+                    values="1 0 0 0 0
+                                        0 1 0 0 0
+                                        0 0 1 0 0
+                                        0 0 0 255 -140"
+                />
+            </filter>
+        </defs>
+    </svg>
+</div>

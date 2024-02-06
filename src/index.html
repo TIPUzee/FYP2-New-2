@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>AI-Disease Predictor</title>
+        <base href="/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    </head>
+
+    <body class="bg-primary-400 overflow-x-hidden">
+        <app-root></app-root>
+        <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
+        <script type="text/javascript" src="assets/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+        <script>
+            const setFavicon = () => {
+                const favicon = document.querySelector('link[rel="icon"]');
+                favicon.href = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'favicon.ico' : 'favicon.ico';
+            };
+
+            setFavicon();
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
+        </script>
+        <style>
+            @keyframes dropdown {
+                0% {
+                    top: -15px;
+                }
+
+                100% {
+                    top: 0;
+                }
+            }
+
+            [data-te-select-dropdown-container-ref=''] > * {
+                /* top: -200px; */
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+                animation-name: dropdown;
+                animation-duration: 200ms;
+            }
+
+            [data-te-input-notch-ref] > * {
+                border-color: #413131a9 !important;
+            }
+
+            [data-te-input-notch-ref]:nth-child(2) {
+                border-top-color: transparent !important;
+            }
+
+            [data-te-input-notch-ref][data-te-input-focused] > * {
+                --tw-border-opacity: 1;
+                border-color: rgb(37 99 235 / var(--tw-border-opacity)) !important;
+            }
+
+            [data-te-input-notch-ref][data-te-input-focused] > :nth-child(2) {
+                --tw-border-opacity: 1;
+                border-top-color: transparent !important;
+            }
+
+            [data-te-input-notch-ref][data-te-input-state-active] > :nth-child(2) {
+                --tw-border-opacity: 1;
+                border-top-color: transparent !important;
+            }
+
+            .focus\:placeholder\:opacity-100:focus::placeholder {
+                opacity: 1 !important;
+            }
+
+            [role='tooltip'] {
+                opacity: 0.95;
+            }
+
+            * {
+                scroll-behavior: smooth;
+            }
+
+            /* body .main.modal-bg-layer {
+                opacity: 0;
+            }
+
+            body:has([data-te-modal-init][data-te-open='true']) .main.modal-bg-layer {
+                opacity: 1;
+                pointer-events: all;
+            } */
+        </style>
+        <script src="https://kit.fontawesome.com/04a7661618.js" crossorigin="anonymous"></script>
+    </body>
+</html>

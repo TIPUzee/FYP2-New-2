@@ -1,0 +1,201 @@
+<div class="main workspace">
+    <div class="mt-6">
+        <div class="inner-container mx-auto">
+            <div class="rounded-lg shadow-lg bg-primary-100 bg-opacity-90 p-7">
+                <div class="mb-5">
+                    <div>
+                        <div class="flex gap-x-6">
+                            <div class="profile-img flex justify-start">
+                                <div class="flex items-center flex-col gap-y-2">
+                                    <img
+                                        src="assets/img/doctor-2.jpeg"
+                                        alt=""
+                                        class="bg-primary-100 w-[180px] object-cover aspect-square rounded-lg shadow-lg ring ring-dark"
+                                    />
+                                    <div class="mt-1 -mb-1 w-fit"><app-rating-stars></app-rating-stars></div>
+                                </div>
+                            </div>
+                            <div class="h-full flex flex-col">
+                                <div class="text-dark font-semibold text-2xl w-max">Dr. David Patil</div>
+                                <div class="mb-2 -mt-1">
+                                    <div class="text-xl text-dark">Neurosurgeon</div>
+                                </div>
+                                <div class="flex-grow"></div>
+                                <div class="mt-2 font-semibold">Charges</div>
+                                <div>Rs. 1500</div>
+                                <div class="mt-2 font-semibold">Appointment Slot</div>
+                                <div>Monday - Around 3PM to 4PM (01/01/2000)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-3xl font-semibold text-dark mb-4">Just One More Step</div>
+                <div class="py-4 px-4 bg-gradient-green-100 rounded-lg border border-current shadow-lg shadow-green-300">
+                    <div class="text-xl font-semibold text-dark">One Step Closer to Confirming Your Appointment!</div>
+                    <div
+                        >We're almost there! Your appointment details are all set and ready. Just one more quick step left to confirm your booking. By proceeding with the
+                        payment, you'll secure your appointment and gain access to exceptional healthcare services tailored to your needs.</div
+                    >
+                </div>
+                <div class="py-4 px-4 bg-gradient-green-100 rounded-lg border border-current mt-5 shadow-lg shadow-green-300">
+                    <div class="text-lg font-semibold text-dark">Secure Your Appointment Instantly!</div>
+                    <div
+                        >Your appointment request is all set! To ensure your spot with our esteemed medical professionals, simply proceed with the payment process. Rest
+                        assured, your information is safe and secure with us. Confirm your booking now and experience premium healthcare solutions hassle-free.</div
+                    >
+                </div>
+                <div class="py-4 px-4 bg-gradient-green-100 rounded-lg border border-current mt-5 shadow-lg shadow-green-300">
+                    <div class="text-lg font-semibold text-dark">Final Step: Payment Confirmation</div>
+                    <div
+                        >You're just a click away from confirming your appointment. By completing the payment, you'll secure your booking instantly. Your healthcare
+                        journey with us awaits! Go ahead, take that final step, and get ready for exceptional medical care tailored to your preferences.</div
+                    >
+                </div>
+                <div class="flex justify-end gap-x-2 mt-6">
+                    <a
+                        (click)="location.back()"
+                        type="button"
+                        data-te-toggle="modal"
+                        data-te-target="#cancelAppointmentConfirmationModal"
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                        class="opacity-50 hover:opacity-100 transition-all cursor-pointer text-center block w-fit rounded bg-danger-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-danger-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal duration-150 ease-in-out focus:outline-none focus:ring-0"
+                    >
+                        Cancel
+                    </a>
+                    <a
+                        (click)="payfastProceedBtn.click()"
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                        class="cursor-pointer shake-top text-center block w-fit rounded bg-blue-600 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-700 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                    >
+                        Proceed To Pay
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div
+    data-te-modal-init
+    data-te-modal-non-invasive="true"
+    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="exampleModalNonInvasive"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+    >
+        <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Book Your Appointment </h5>
+                <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                <div class="relative mb-3" data-te-input-wrapper-init>
+                    <textarea
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                        placeholder="For example; I am having itching and flu for 2 days and I also have ..."
+                    ></textarea>
+                    <label
+                        for="exampleFormControlTextarea1"
+                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >Describe Your Symptoms</label
+                    >
+                </div>
+            </div>
+            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                <button
+                    type="button"
+                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                    data-te-modal-dismiss
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                >
+                    <div
+                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status"
+                    >
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
+                    </div>
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+<!-- PayFast Payment Form -->
+<form
+    id="payfast-form"
+    class="form-inline hidden"
+    name="PayFast-payment-form"
+    method="post"
+    action="https://ipguat.apps.net.pk/Ecommerce/api/Transaction/PostTransaction"
+    target="_blank"
+>
+    <input type="TEXT" name="CURRENCY_CODE" value="PKR" /><br />
+    <br />
+    <input type="TEXT" name="MERCHANT_ID" value="19526" /><br />
+    <br />
+    <input type="TEXT" name="MERCHANT_NAME" value="UAT Demo Merchant1" /><br />
+    <br />
+    <input type="TEXT" #payfastTokenInput name="TOKEN" value="k" /><br />
+    <br />
+    <input type="TEXT" name="BASKET_ID" value="12" /><br />
+    <br />
+    <input type="TEXT" name="TXNAMT" value="1500" /><br />
+    <br />
+    <!-- Transaction Date: <input type="TEXT" name="ORDER_DATE" value="${payfast_params.ORDER_DATE}" /><br /> <br> -->
+    <input type="TEXT" name="SUCCESS_URL" value="http://localhost:4200/p/pay" /><br />
+    <br />
+    <input type="TEXT" name="FAILURE_URL" value="http://localhost:4200/p/pay" /><br />
+    <br />
+    <input type="TEXT" name="CHECKOUT_URL" value="https://skillsseekho.com/api/payfast-course-purchased-notification" /><br />
+    <br />
+    <input type="TEXT" name="TXNDESC" value="Dr. David Patil" /><br />
+    <br />
+    <input type="TEXT" name="PROCCODE" value="00" /><br />
+    <br />
+    <input type="TEXT" name="TRAN_TYPE" value="ECOMM_PURCHASE" /><br />
+    <br />
+
+    <INPUT TYPE="HIDDEN" NAME="ITEMS[0][SKU]" value="Appointment - 1PM to 2PM - 01/01/2000" />
+    <INPUT TYPE="HIDDEN" NAME="ITEMS[0][NAME]" value="Zee" />
+    <INPUT TYPE="HIDDEN" NAME="ITEMS[0][PRICE]" value="1500" />
+    <INPUT TYPE="HIDDEN" NAME="ITEMS[0][QTY]" value="1" />
+
+    <div class="row">
+        <div class="col-md-12" style="text-align: center">
+            <input #payfastProceedBtn type="submit" id="submitBtn" value="Submit" />
+        </div>
+    </div>
+</form>
+<!-- PayFast Payment Form -->
