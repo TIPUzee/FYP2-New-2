@@ -1,5 +1,6 @@
 from typing import Any
 
+from werkzeug.datastructures import FileStorage
 
 class Func:
     __uuid_count = 0
@@ -56,3 +57,8 @@ class Func:
                     curr_obj[col_name] = row[i]
                 result.append(curr_obj)
             return result
+
+    class FileHelpers:
+        @staticmethod
+        def nb_of_lines(file_path: list[FileStorage]) -> int:
+            return sum(1 for _ in file_path)

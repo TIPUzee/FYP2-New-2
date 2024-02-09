@@ -33,7 +33,8 @@ class Validator:
         Callable[[Any], bool]
             A new validator function that combines the behavior of all the input validator functions.
 
-        Example:
+        Example
+        -------
             >>> class Person(Validator.PropertyTypeValidatorEntity):
             ...     def __init__(self):
             ...         self.m_age = Validator.PropertyValidatable(
@@ -44,11 +45,9 @@ class Validator:
             ...             )
             ...         )
             ...         super().__init__()
-
             >>> p = Person()
             >>> p.m_age = 19 # True
             >>> p.m_age = 24 # False
-
         """
 
         def _(val) -> bool:
@@ -62,6 +61,41 @@ class Validator:
 
     @staticmethod
     def Or(*validator_func: Callable[[Any], bool]):
+        """
+        Combines multiple validator functions like an `Or` operator.
+
+        Combines multiple validator functions like an `Or` operator, into a single validator function that returns
+        True if any (at least one) of the validator functions return True for the given value, and False otherwise.
+
+        Parameters
+        ----------
+        `validator_func`: Callable[[Any], bool]
+            Variable number of validator functions. Each function should take a single
+            argument and return a boolean value.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A new validator function that combines the behavior of all the input validator functions.
+
+        Example
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Or(
+            ...                 Validator.Int(),
+            ...                 Validator.Float()
+            ...             )
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = 19 # True
+            >>> p.m_age = 20.52 # True
+            >>> p.m_age = 'Ali' # False
+
+        """
+
         def _(val) -> bool:
             for func in validator_func:
                 if func(val):
@@ -73,6 +107,36 @@ class Validator:
 
     @staticmethod
     def Not(validator_func: Callable[[Any], bool]):
+        """
+        Negates the result of a validator function.
+
+        Wraps a validator function and returns a new validator function that returns
+        True if the wrapped validator function returns False for the given value, and False otherwise.
+
+        Parameters
+        ----------
+        `validator_func`: Callable[[Any], bool]
+            A validator function that takes a single argument and returns a boolean value.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A new validator function that negates the result of the wrapped validator function.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Not(Validator.Str())
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = 19 # True
+            >>> p.m_age = 20.52 # True
+            >>> p.m_age = 'Ali' # False
+        """
+
         def _(val) -> bool:
             return not validator_func(val)
 
@@ -81,6 +145,30 @@ class Validator:
 
     @staticmethod
     def Null():
+        """
+        Checks if the value is None.
+
+        Returns True if the value is None, and False otherwise.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that checks if the value is None.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Null()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # True
+            >>> p.m_age = 19 # False
+            >>> p.m_age = 'Ali' # False
+        """
+
         def _(val) -> bool:
             return val is None
 
@@ -89,6 +177,30 @@ class Validator:
 
     @staticmethod
     def Any():
+        """
+        Checks if the value is any type.
+
+        Returns True for any value, regardless of its type.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that always returns True.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Any()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # True
+            >>> p.m_age = 19 # True
+            >>> p.m_age = 'Ali' # True
+        """
+
         def _(val) -> bool:
             return True
 
@@ -97,6 +209,30 @@ class Validator:
 
     @staticmethod
     def Str():
+        """
+        Checks if the value is a string.
+
+        Returns True if the value is of type str, and False otherwise.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a string.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Str()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # False
+            >>> p.m_age = 19 # False
+            >>> p.m_age = 'Ali' # True
+        """
+
         def _(val):
             return type(val) == str
 
@@ -105,6 +241,35 @@ class Validator:
 
     @staticmethod
     def MinLen(min_len: int):
+        """
+        Checks if the length of a string (or list or any iteratable object) is greater than or equal to a specified
+        minimum length.
+
+        Parameters
+        ----------
+        min_len : int
+            The minimum length that the string (or list or any iteratable object) should have.
+
+        Returns
+        -------
+        Callable[[str], bool]
+            A validator function that returns True if the length of the string (or list or any iteratable object) is
+            greater than or equal to min_len, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Str()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # False
+            >>> p.m_age = 19 # False
+            >>> p.m_age = 'Ali' # True
+        """
+
         def _(val: str) -> bool:
             return len(val) >= min_len
 
@@ -113,6 +278,34 @@ class Validator:
 
     @staticmethod
     def MaxLen(max_len: int):
+        """
+        Checks if the length of a string (or list or any iteratable object) is less than a specified maximum length.
+
+        Parameters
+        ----------
+        max_len : int
+            The maximum length that the string (or list or any iteratable object) should have.
+
+        Returns
+        -------
+        Callable[[str], bool]
+            A validator function that returns True if the length of the string (or list or any iteratable object) is
+            less than max_len, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Str()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # False
+            >>> p.m_age = 19 # False
+            >>> p.m_age = 'Ali' # True
+        """
+
         def _(val: str) -> bool:
             return len(val) < max_len
 
@@ -121,7 +314,30 @@ class Validator:
 
     @staticmethod
     def List():
-        def _(val: str) -> bool:
+        """
+        Checks if the value is a list.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a list, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.List()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # False
+            >>> p.m_age = 19 # False
+            >>> p.m_age = 'Ali' # False
+            >>> p.m_age = [1, 2, 3] # True
+        """
+
+        def _(val: Any) -> bool:
             return type(val) == list
 
         _.__custom_str_format__ = f'List()'
@@ -129,6 +345,34 @@ class Validator:
 
     @staticmethod
     def MinVal(min_val: int):
+        """
+        Checks if the value is greater than or equal to a minimum value.
+
+        Parameters
+        ----------
+        min_val : int
+            The minimum value that the input should be greater than or equal to.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is greater than or equal to the minimum value,
+            and False otherwise.
+
+        Examples
+        -------
+        >>> class Person(Validator.PropertyTypeValidatorEntity):
+        ...     def __init__(self):
+        ...         self.m_age = Validator.PropertyValidatable(
+        ...             Validator.MinVal(18)
+        ...         )
+        ...         super().__init__()
+        >>> p = Person()
+        >>> p.m_age = None # False
+        >>> p.m_age = 19 # True
+        >>> p.m_age = 17 # False
+        """
+
         def _(val) -> bool:
             return val >= min_val
 
@@ -137,14 +381,66 @@ class Validator:
 
     @staticmethod
     def MaxVal(max_val: int):
+        """
+        Checks if the value is less than or equal to a maximum value.
+
+        Parameters
+        ----------
+        max_val : int
+            The maximum value that the input should be less than or equal to.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is less than or equal to the maximum value,
+            and False otherwise.
+
+        Examples
+        -------
+        >>> class Person(Validator.PropertyTypeValidatorEntity):
+        ...     def __init__(self):
+        ...         self.m_age = Validator.PropertyValidatable(
+        ...             Validator.MaxVal(100)
+        ...         )
+        ...         super().__init__()
+        >>> p = Person()
+        >>> p.m_age = None # True
+        >>> p.m_age = 99 # True
+        >>> p.m_age = 101 # False
+        """
+
         def _(val) -> bool:
-            return val < max_val
+            return val <= max_val
 
         _.__custom_str_format__ = f'MaxVal({max_val})'
         return _
 
     @staticmethod
     def Int():
+        """
+        Checks if the value is an integer.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is an integer, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Int()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # False
+            >>> p.m_age = 19 # True
+            >>> p.m_age = 19.56 # False
+            >>> p.m_age = 'Ali' # False
+            >>> p.m_age = [1, 2, 3] # False
+        """
+
         def _(val) -> bool:
             return type(val) == int
 
@@ -153,6 +449,30 @@ class Validator:
 
     @staticmethod
     def Float():
+        """
+        Checks if the value is a float.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a float, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Float()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # False
+            >>> p.m_age = 19 # False
+            >>> p.m_age = 'Ali' # False
+            >>> p.m_age = [1, 2, 3] # False
+            >>> p.m_age = 19.5 # True
+        """
+
         def _(val) -> bool:
             return type(val) == float
 
@@ -161,6 +481,30 @@ class Validator:
 
     @staticmethod
     def Bool():
+        """
+        Checks if the value is a boolean.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a boolean, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Bool()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # False
+            >>> p.m_age = 19 # False
+            >>> p.m_age = 'Ali' # False
+            >>> p.m_age = [1, 2, 3] # False
+            >>> p.m_age = True # True
+        """
+
         def _(val) -> bool:
             return type(val) == bool
 
@@ -169,6 +513,29 @@ class Validator:
 
     @staticmethod
     def Username():
+        """
+        Checks if the value is a valid username.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a valid username, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Username()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = None # False
+            >>> p.m_age = 19 # False
+            >>> p.m_age = 'Ali' # True
+            >>> p.m_age = [1, 2, 3] # False
+        """
+
         def _(val) -> bool:
             if (type(val) != str
                     or not 3 <= len(val) <= 15
@@ -187,6 +554,28 @@ class Validator:
 
     @staticmethod
     def Email():
+        """
+        Checks if the value is a valid email address.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a valid email address, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_age = Validator.PropertyValidatable(
+            ...             Validator.Email()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_age = 'Ali' # False
+            >>> p.m_age = [1, 2, 3] # False
+            >>> p.m_age = 'test@example.com' # True
+        """
+
         def _(val) -> bool:
             if (type(val) != str
                     or not re.match(r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$', val)):
@@ -198,6 +587,30 @@ class Validator:
 
     @staticmethod
     def Password():
+        """
+        Checks if the value is a valid password.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a valid password, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_password = Validator.PropertyValidatable(
+            ...             Validator.Password()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_password = None # False
+            >>> p.m_password = 19 # False
+            >>> p.m_password = 'Ali' # False
+            >>> p.m_password = [1, 2, 3] # False
+            >>> p.m_password = 'Password123' # True
+        """
+
         def _(val) -> bool:
             if (not isinstance(val, str)
                     or not 8 <= len(val) < 30  # You can adjust the length requirements as needed
@@ -212,6 +625,35 @@ class Validator:
 
     @staticmethod
     def TextInHtmlMaxLen(max_len: int):
+        """
+        Checks if the value is a string containing HTML and its text length is less than the specified maximum length.
+
+        Parameters
+        ----------
+        max_len : int
+            The maximum allowed length of the text.
+
+        Returns
+        -------
+        Callable[[str], bool]
+            A validator function that returns True if the value is a string containing HTML and its text length is
+            less than the specified maximum length, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_html_content = Validator.PropertyValidatable(
+            ...             Validator.TextInHtmlMaxLen(10)
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_html_content = 'Ali' # True
+            >>> p.m_html_content = '<p>Hello</p>' # True
+            >>> p.m_html_content = '<p>Hello, World</p>' # False
+            >>> p.m_html_content = '<p>Hi, <strong>Ali</strong></p>' # True
+        """
+
         def _(val: str) -> bool:
             soup = BeautifulSoup(val, 'html.parser')
             text = soup.get_text()
@@ -223,6 +665,36 @@ class Validator:
 
     @staticmethod
     def TextInHtmlMinLen(min_len: int):
+        """
+        Checks if the value is a string containing HTML and its text length is greater than or equal to the specified
+        minimum length.
+
+        Parameters
+        ----------
+        min_len : int
+            The minimum allowed length of the text.
+
+        Returns
+        -------
+        Callable[[str], bool]
+            A validator function that returns True if the value is a string containing HTML and its text length is
+            greater than or equal to the specified minimum length, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_html_content = Validator.PropertyValidatable(
+            ...             Validator.TextInHtmlMinLen(5)
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_html_content = 'Ali' # False
+            >>> p.m_html_content = '<p>Hello</p>' # True
+            >>> p.m_html_content = '<p>Hello, World</p>' # True
+            >>> p.m_html_content = '<p>Hi, <strong>Ali</strong></p>' # True
+        """
+
         def _(val: str) -> bool:
             soup = BeautifulSoup(val, 'html.parser')
             text = soup.get_text()
@@ -237,6 +709,42 @@ class Validator:
         allowed_tags: set[str] = set(), allowed_attributes: dict[str, list[str]] = dict(),
         allowed_css_props: Optional[list[str]] = None
     ):
+        """
+        Decorator that sanitizes input strings to neutralize JavaScript injection.
+
+        Parameters
+        ----------
+        allowed_tags : set[str], optional
+            Set of allowed HTML tags, by default an empty set.
+        allowed_attributes : dict[str, list[str]], optional
+            Dictionary of allowed HTML attributes for each tag, by default an empty dictionary.
+        allowed_css_props : Optional[list[str]], optional
+            List of allowed CSS properties, by default None.
+
+        Returns
+        -------
+        Callable
+            Decorator function that sanitizes input strings.
+
+        Examples
+        -------
+        @Validator.neutralize_js_injection(
+            allowed_tags={'p', 'strong'},
+            allowed_attributes={'p': ['class'], 'strong': ['style']},
+            allowed_css_props=['color', 'font-size']
+        )
+        def my_function(input_str: str):
+            # Function logic
+
+        Notes
+        -------
+        - This decorator uses the `bleach` library to sanitize input strings.
+        - It removes any JavaScript code and ensures that only the specified HTML tags, attributes,
+        and CSS properties are allowed.
+        - If `allowed_css_props` is not provided, only HTML tags and attributes will be sanitized.
+        - The decorator can be applied to functions that accept string inputs.
+        """
+
         def decorator(func: Callable):
             def decorated(*args, **kwargs):
                 args = list(args)
@@ -344,6 +852,34 @@ class Validator:
         return decorated
 
     class PropertyValidatable:
+        """
+        Checks if the value meets the specified validation criteria.
+
+        Parameters
+        ----------
+        func : Callable[[Any], bool]
+            The validation function that checks if the value meets the criteria.
+
+        Returns
+        -------
+        PropertyValidatable
+            An instance of PropertyValidatable with the specified validation function.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_html_content = Validator.PropertyValidatable(
+            ...             Validator.TextInHtmlMinLen(5)
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_html_content = 'Ali' # False
+            >>> p.m_html_content = '<p>Hello</p>' # True
+            >>> p.m_html_content = '<p>Hello, World</p>' # True
+            >>> p.m_html_content = '<p>Hi, <strong>Ali</strong></p>' # True
+        """
+
         def __init__(self, func: Callable[[Any], bool]):
             self.validate_func = func
 
@@ -383,10 +919,11 @@ class Validator:
             if not hasattr(self, '__property_type_validator_entity_init_called__'):
                 self.__generate_properties()
                 setattr(self, '__property_type_validator_entity_init_called__', True)
-            self.__property_validator_errors_type: Union[Literal['FRONTEND', 'CLIENT', 'BACKEND']] = 'FRONTEND'
+            self.__property_validator_errors_type: Union[
+                Literal['FRONTEND'], Literal['CLIENT'], Literal['BACKEND']] = 'FRONTEND'
             super().__init__()
 
-        def set_validator_errors_type(self, errors_type: Union[Literal['FRONTEND', 'CLIENT', 'BACKEND']]):
+        def set_validator_errors_type(self, errors_type: Union[Literal['FRONTEND'], Literal['CLIENT'], Literal['BACKEND']]):
             """
             Sets the type of validation errors to be returned.
             If any validation error occurs, the error will be returned in the specified type.

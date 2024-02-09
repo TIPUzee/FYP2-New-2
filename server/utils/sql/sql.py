@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Optional
 
 from mysql import connector
@@ -16,7 +18,9 @@ class SQL:
         )
         self.cursor: Optional[MySQLCursor] = None
 
-    def execute(self, query: str, params: list = []) -> list[dict[str, Any]] | bool | int:
+    def execute(self, query: str, params: list = None) -> list[dict[str, Any]] | int:
+        if not params:
+            params = []
         self.cursor = self.connection.cursor()
         new_params = []
         for i, param in enumerate(params):
@@ -33,12 +37,19 @@ class SQL:
             Func.SqlHelpers.nb_of_coming_queries_to_print -= 1
 
         self.cursor.execute(query, new_params)
+
         if 'select' in query.lower():
             return Func.SqlHelpers.fetch_all_as_dicts(self.cursor)
         else:
             if 'insert' in query.lower():
                 return self.cursor.lastrowid
-            return True
+            return self.cursor.rowcount
 
     def commit(self):
         self.connection.commit()
+
+    def __del__(self):
+        self.connection.rollback()
+        self.connection.close()
+        if self.cursor:
+            self.cursor.close()
