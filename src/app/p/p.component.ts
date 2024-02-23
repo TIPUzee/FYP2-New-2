@@ -12,9 +12,10 @@ import { UtilsService } from '../services/utils/utils.service';
 })
 export class PComponent implements AfterViewInit {
     constructor(private htmlService: HtmlService, private utilsService: UtilsService) {
-        utilsService.setCurrentUser(utilsService.UserType.Patient);
+        utilsService.setCurrentUser('p');
     }
-
+    
+    
     ngAfterViewInit(): void {
         this.htmlService.body().classList.remove('lg:pt-[142px]');
         this.htmlService.body().classList.remove('pt-[100px]');

@@ -16,8 +16,10 @@ export class NotificationService {
     notificationChange: Subject<Notification> = new Subject<Notification>();
     count = 0;
     
+    
     constructor() {
     }
+    
     
     public info(message: string, description: string) {
         const time = new Date().getTime();
@@ -26,6 +28,7 @@ export class NotificationService {
         this.notificationChange.next({ message, type: 'info', time, description });
     }
     
+    
     public success(message: string, description: string) {
         const time = new Date().getTime();
         this.count++;
@@ -33,10 +36,19 @@ export class NotificationService {
         this.notificationChange.next({ message, type: 'success', time, description });
     }
     
+    
     public error(message: string, description: string) {
         const time = new Date().getTime();
         this.count++;
         this.__notifications.push({ message, type: 'error', time, description });
         this.notificationChange.next({ message, type: 'error', time, description });
+    }
+    
+    
+    public warning(message: string, description: string) {
+        const time = new Date().getTime();
+        this.count++;
+        this.__notifications.push({ message, type: 'warning', time, description });
+        this.notificationChange.next({ message, type: 'warning', time, description });
     }
 }

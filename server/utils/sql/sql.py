@@ -48,6 +48,9 @@ class SQL:
     def commit(self):
         self.connection.commit()
 
+    def rollback(self):
+        self.connection.rollback()
+
     def __del__(self):
         self.connection.rollback()
         self.connection.close()

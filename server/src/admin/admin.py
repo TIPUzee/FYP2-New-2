@@ -1,14 +1,25 @@
 from __future__ import annotations
 
+from typing import Optional
+
 from flask import request
 
-from utils import AccessControlledEntity, Secret, Validator as Vld
+from utils import AccessControlledEntity, Secret, SQLEntity, Validator as vld
 
 
-class Admin(Vld.PropertyTypeValidatorEntity):
+class Admin(SQLEntity, vld.PropertyTypeValidatorEntity):
     def __init__(self):
-        self.m_id = Vld.PropertyValidatable(Vld.And(Vld.Int(), Vld.MinVal(0)))
+        self.m_id: Optional[int] = vld.validatable(vld.And(vld.Int(), vld.MinVal(0)))
+        self.m_email: Optional[str] = vld.validatable(vld.And(vld.Str(), vld.Email(), vld.MaxLen(64)))
+        self.m_password: Optional[str] = vld.validatable(
+            vld.And(vld.Str(), vld.MinLen(8), vld.MaxLen(16), vld.Password())
+        )
         super().__init__()
+        self.turn_on_validation()
+
+    @property
+    def db_table_name(self) -> str:
+        return 'admins'
 
     class Login(AccessControlledEntity):
         def __init__(self):

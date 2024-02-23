@@ -27,6 +27,11 @@ class App:
         App._App.run(**kwargs)
 
     @staticmethod
+    def enable_cors():
+        from flask_cors import CORS
+        CORS(App._App)
+
+    @staticmethod
     def template_route(route_url: str, **kwargs):
         def decorator(func):
             Func.assign_uui(func)
@@ -54,17 +59,23 @@ class App:
 
             _func = Res.handle(_)
             Func.assign_uui(_func)
-            App._App.route(f'/api/{route_url}', methods=[method], **kwargs)(_func)
+            App.__validate_api_route(route_url)
+            App._App.route(f'/api{route_url}', methods=[method], **kwargs)(_func)
 
         Func.assign_uui(decorator)
         return decorator
+
+    @staticmethod
+    def __validate_api_route(route: str):
+        if not route.startswith('/'):
+            raise ValueError('API route must start with /', 'Provided route:', route)
 
     @staticmethod
     def __validate_access_control(access_control: list[type[AccessControlledEntity]] | Literal['All'] | None):
         if access_control == 'All':
             return None
         if not access_control:
-            return Res.unauthenticated(error_messages=['No access control to any entity'])
+            return Res.unauthenticated('No access control to any entity', reason=Res.Reason.FRONTEND)
         token_sending_options = []
         for entity in access_control:
             if not issubclass(entity, AccessControlledEntity):
@@ -78,13 +89,14 @@ class App:
                 token_sending_options.append(entity.get_representation_str())
                 continue
             user = entity.get_user(token)
+            if not user:
+                token_sending_options.append(entity.get_representation_str())
+                continue
             break
         else:
             return Res.unauthenticated(
-                custom_error_code=Res.CustomErrorCode.INVALID_ACCESS_TOKEN,
-                error_messages=[
-                    f'Failed to get or parse access control token as {token}' for token in token_sending_options
-                ]
+                *[f'Failed to get or parse access control token as {token}' for token in token_sending_options],
+                reason=Res.Reason.FRONTEND
             )
         return user
 

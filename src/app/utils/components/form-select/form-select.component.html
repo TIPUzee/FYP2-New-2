@@ -1,0 +1,41 @@
+<ng-container [formGroup]="formGroup">
+
+   <!---TE-Select--->
+   <div
+      [ngClass]="{'form-select---invalid': formGroup.get(controlName)?.touched && formGroup.get(controlName)?.invalid}"
+   >
+      <select
+         #selectEle
+         data-te-select-init
+         formControlName="userType"
+      >
+         <ng-container *ngFor="let option of options">
+            <option
+               [disabled]="option.isDisabled" [hidden]="option.isHidden" [selected]="option.isSelected"
+               [value]="option.value"
+            >
+               {{
+                  option.label
+               }}
+            </option>
+         </ng-container>
+      </select>
+      <label data-te-select-label-ref> {{ label }}</label>
+   </div>
+   <!---TE-Select--->
+
+   <!---Errors--->
+   <div>
+      <div
+         [ngClass]="{'': updateError(),  '!grid-rows-[1fr] !opacity-100': currentError !== ''}"
+         class="form---error"
+      >
+         <div
+         >
+            {{ currentError }}
+         </div>
+      </div>
+   </div>
+   <!---Errors--->
+
+</ng-container>

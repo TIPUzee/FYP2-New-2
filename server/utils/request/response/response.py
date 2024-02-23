@@ -1,5 +1,8 @@
+from __future__ import annotations
+
 import traceback
 from enum import Enum
+from typing import Literal, Optional, TypedDict
 
 from flask import Response as FlaskResponse
 
@@ -21,95 +24,87 @@ class HTTPCode(Enum):
     SERVICE_UNAVAILABLE = 503
 
 
-class Error(Enum):
+class Reason(Enum):
     NONE = None
     SERVER = 'SERVER'
     CLIENT = 'CLIENT'
     FRONTEND = 'FRONTEND'
 
 
-class CustomErrorCode(Enum):
-    NONE = None
-    SERVER_ERROR = 'SERVER_ERROR'
-    FRONTEND_ERROR = 'FRONTEND_ERROR'
-    KEY_NOT_FOUND_IN_HEADERS = 'KEY_NOT_FOUND_IN_HEADERS'
-    INVALID_VALUE = 'INVALID_VALUE'
-    INVALID_URL_PATH_PARAM = 'INVALID_URL_PATH_PARAM'
-    INVALID_ACCESS_TOKEN = 'INVALID_ACCESS_TOKEN'
-    INVALID_USER = 'INVALID_USER'
-    FILE_DOES_NOT_EXIST = 'FILE_DOES_NOT_EXIST'
-    API_NOT_FOUND = 'API_NOT_FOUND'
+class Popup(TypedDict):
+    type: Literal['success'] | Literal['error'] | Literal['warning'] | Literal['info']
+    msg: str
 
 
 class Response(Exception):
     HTTPCode = HTTPCode
-    Error = Error
-    CustomErrorCode = CustomErrorCode
+    Reason = Reason
 
     def __init__(
         self,
         http_code: HTTPCode = HTTPCode.OK,
-        error_by: Error = Error.NONE,
-        custom_error_code: CustomErrorCode = CustomErrorCode.NONE,
-        error_messages: list[str] = None,
+        reason: Reason = Reason.NONE,
+        popups: Optional[list[Popup]] = None,
+        desc: Optional[str] = None,
         _file: FlaskResponse = None,
-        **kwargs
+        kwargs: Optional[dict] = None,
+        secret_errors: Optional[list[str]] = None,
     ):
-        self.kwargs = kwargs
         self.http_code = http_code.value
-        self.error_by: str = error_by.value
-        self.error_messages: list[str] = error_messages
-        self.custom_error_code: Response.CustomErrorCode = custom_error_code
+        self.reason: str = reason.value
+        self.popups = popups
+        self.desc = desc
         self._file = _file
+        self.kwargs = kwargs
+        self.secret_errors = secret_errors
         super().__init__()
 
     @staticmethod
     def server_error(*messages):
         raise Response(
-            Response.HTTPCode.INTERNAL_SERVER_ERROR,
-            Response.Error.SERVER,
-            Response.CustomErrorCode.SERVER_ERROR,
-            error_messages=[*messages, traceback.format_exc()]
+            http_code=Response.HTTPCode.INTERNAL_SERVER_ERROR,
+            reason=Response.Reason.SERVER,
+            secret_errors=[traceback.format_exc(), *messages] if traceback.format_exc() != '''NoneType: None
+''' else messages
         )
 
     @staticmethod
-    def client_error(custom_error_code: CustomErrorCode, *messages: str):
+    def client_error(*popups: Popup, desc: str):
         raise Response(
-            Response.HTTPCode.BAD_REQUEST,
-            Response.Error.CLIENT,
-            custom_error_code,
-            error_messages=[*messages]
+            http_code=Response.HTTPCode.BAD_REQUEST,
+            reason=Response.Reason.CLIENT,
+            popups=[*popups],
+            desc=desc
         )
 
     @staticmethod
-    def frontend_error(*messages):
+    def frontend_error(*msgs: str):
         raise Response(
-            Response.HTTPCode.BAD_REQUEST,
-            Response.Error.FRONTEND,
-            Response.CustomErrorCode.FRONTEND_ERROR,
-            error_messages=[*messages]
+            http_code=Response.HTTPCode.BAD_REQUEST,
+            reason=Response.Reason.FRONTEND,
+            secret_errors=list(msgs)
         )
 
     @staticmethod
-    def ok(**data):
+    def ok(popups: list[str] = None, **data):
         raise Response(
-            Response.HTTPCode.OK,
-            Response.Error.NONE,
-            custom_error_code=Response.CustomErrorCode.NONE,
-            **data
+            http_code=Response.HTTPCode.OK,
+            reason=Response.Reason.NONE,
+            popups=[{'type': 'success', 'msg': p} for p in popups] if popups else None,
+            kwargs=data
         )
 
     @staticmethod
     def unauthenticated(
-        error_type: Error = Error.FRONTEND,
-        custom_error_code: CustomErrorCode = CustomErrorCode.INVALID_USER,
-        error_messages: list[str] = None
+        *popups: str,
+        desc: str = None,
+        reason: Reason = Reason.CLIENT,
     ):
         raise Response(
             Response.HTTPCode.UNAUTHORIZED,
-            error_type,
-            custom_error_code,
-            error_messages=error_messages
+            reason=reason,
+            popups=[{'type': 'error', 'msg': p} for p in popups] if popups else None,
+            desc=desc
         )
 
     @staticmethod
@@ -120,15 +115,6 @@ class Response(Exception):
         )
 
     @staticmethod
-    def file_not_found(*messages):
-        raise Response(
-            Response.HTTPCode.NOT_FOUND,
-            Response.Error.CLIENT,
-            Response.CustomErrorCode.FILE_DOES_NOT_EXIST,
-            error_messages=[*messages]
-        )
-
-    @staticmethod
     def handle(func):
         def decorator(*args, **kwargs):
             try:
@@ -136,14 +122,17 @@ class Response(Exception):
                 if returns:
                     raise Response.server_error('API must return response via Response class')
             except Response as e:
+                if e.secret_errors:
+                    print(*e.secret_errors, sep='\n')
                 return e.generate_response()
             except BaseException as e:
-                return Response(
+                res = Response(
                     Response.HTTPCode.INTERNAL_SERVER_ERROR,
-                    Response.Error.SERVER,
-                    Response.CustomErrorCode.SERVER_ERROR,
-                    error_messages=[str(e), traceback.format_exc()]
-                ).generate_response()
+                    Response.Reason.SERVER,
+                    secret_errors=[str(e), traceback.format_exc()]
+                )
+                print(*res.secret_errors, sep='\n')
+                return res.generate_response()
 
         return decorator
 
@@ -151,11 +140,10 @@ class Response(Exception):
         if self._file:
             return self._file, self.http_code
         return {
-            'success': self.error_by == Response.Error.NONE.value,
-            'error':   {
-                'reason':          self.error_by,
-                'messages':        self.error_messages,
-                'customErrorCode': self.custom_error_code.value
-            },
-            'data':    self.kwargs if self.error_by == Response.Error.NONE.value else None
+            'success': self.reason == Response.Reason.NONE.value,
+            'reason':  self.reason,
+            'data':    self.kwargs if self.reason == Response.Reason.NONE.value else None,
+            'popups':  self.popups,
+            'desc':    self.desc,
+            'errors':  self.secret_errors if self.reason != Reason.SERVER else None
         }, self.http_code

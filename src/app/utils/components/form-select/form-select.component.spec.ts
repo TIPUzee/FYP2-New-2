@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationComponent } from './notification.component';
+import { FormSelectComponent } from './form-select.component';
 
-describe('NotificationComponent', () => {
-  let component: NotificationComponent;
-  let fixture: ComponentFixture<NotificationComponent>;
+describe('FormSelectComponent', () => {
+  let component: FormSelectComponent;
+  let fixture: ComponentFixture<FormSelectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NotificationComponent]
+      imports: [FormSelectComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(NotificationComponent);
+    fixture = TestBed.createComponent(FormSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

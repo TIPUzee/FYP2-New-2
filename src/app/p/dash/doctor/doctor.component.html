@@ -1,91 +1,109 @@
 <div class="main workspace">
-    <div class="text-dark text-opacity-80">
-        <div class="inner-container mx-auto">
-            <div class="profile-cover">
-                <div class="rounded-lg shadow-lg h-[300px]">
-                    <img src="assets/img/doctor-cover-profile.jpg" alt="" class="h-full w-full object-cover rounded-lg bg-primary-100" />
-                </div>
+   <div class="text-dark text-opacity-80">
+      <div class="inner-container mx-auto">
+         <div class="profile-cover">
+            <div class="rounded-lg shadow-lg h-[300px]">
+               <img
+                  alt=""
+                  src="assets/img/doctor-cover-profile.jpg"
+                  class="h-full w-full object-cover rounded-lg bg-primary-100"
+               />
             </div>
-            <div class="profile-img">
-                <div class="flex items-center flex-col gap-y-2 -mt-36">
-                    <img
-                        src="assets/img/doctor-2-centered.jpeg"
-                        alt=""
-                        class="bg-primary-100 w-[180px] object-cover aspect-square rounded-full shadow-lg ring ring-dark"
-                    />
-                    <div class="text-dark font-semibold text-2xl">Dr. David Patil</div>
-                    <div class="-mt-2 mb-2"><app-rating-stars></app-rating-stars></div>
-                </div>
+         </div>
+         <div class="profile-img">
+            <div class="flex items-center flex-col gap-y-2 -mt-36">
+               <img
+                  alt=""
+                  src="assets/img/doctor-2-centered.jpeg"
+                  class="bg-primary-100 w-[180px] object-cover aspect-square rounded-full shadow-lg ring ring-dark"
+               />
+               <div class="text-dark font-semibold text-2xl">Dr. David Patil</div>
+               <div class="-mt-2 mb-2">
+                  <app-rating-stars></app-rating-stars>
+               </div>
             </div>
-            <div class="mt-4" [ngClass]="utilsService.getCurrentUser() == utilsService.UserType.Patient ? '' : 'hidden'">
-                <div class="flex justify-end">
-                    <a
-                        routerLink="/p/book"
-                        data-te-ripple-init
-                        data-te-ripple-color="light"
-                        class="cursor-pointer shake-top text-center block w-fit rounded bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
-                    >
-                        Book Appointment
-                    </a>
-                </div>
+         </div>
+         <div [ngClass]="utilsService.getCurrentUser() == 'p' ? '' : 'hidden'" class="mt-4">
+            <div class="flex justify-end">
+               <a
+                  data-te-ripple-color="light"
+                  data-te-ripple-init
+                  routerLink="/p/book"
+                  class="cursor-pointer shake-top text-center block w-fit rounded bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+               >
+                  Book Appointment
+               </a>
             </div>
-            <div class="mb-3 mt-3 bg-primary-100 bg-opacity-90 rounded-lg shadow-lg p-6">
-                <div class="mb-1 flex justify-between">
-                    <div class="text-xl font-semibold text-dark">Neurosurgeon</div>
-                    <div>Charger Per Appointment: <span class="text-danger-600 font-semibold">Rs. 1500</span></div>
-                </div>
-                <div class="">
-                    <div class="mt-2"> Availibility Timings </div>
-                    <div class="flex gap-x-2 mt-1 items-center flex-wrap">
-                        <span
-                            class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
-                            >Mon 9AM - 2PM</span
-                        >
-                        <span
-                            class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
-                            >Mon 9AM - 2PM</span
-                        >
-                        <span
-                            class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
-                            >Mon 9AM - 2PM</span
-                        >
-                        <span
-                            class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
-                            >Mon 9AM - 2PM</span
-                        >
-                        <span
-                            class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
-                            >Mon 9AM - 2PM</span
-                        >
-                        <span
-                            class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
-                            >Mon 9AM - 2PM</span
-                        >
-                    </div>
-                </div>
-                <div #slotsContainer class="mt-6 grid grid-rows-[0fr] transition-all duration-300">
-                    <div class="overflow-hidden">
-                        <div class="rounded-lg border border-current p-4">
-                            <div class="">Select Appointment Week</div>
-                            <div class="flex justify-start flex-wrap">
-                                <ng-container *ngFor="let week of ['Current Week', 'Next Week', 'Week After Next']; let i = index">
-                                    <div class="mb-[0.125rem] mr-4 inline-block min-h-[1.5rem] pl-[1.5rem]">
-                                        <input
-                                            class="relative float-left -ml-[1.5rem] block mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
-                                            type="radio"
-                                            name="weekSelectorRadio"
-                                            id="weekSelectorRadio{{ i }}"
-                                            value="weekSelectorRadio{{ i }}"
-                                            [checked]="i == 0"
-                                        />
-                                        <label class="mt-px -ms-2 ps-3 inline-block pl-[0.15rem] hover:cursor-pointer" for="weekSelectorRadio{{ i }}">{{ week }}</label>
-                                    </div>
-                                </ng-container>
-                            </div>
-                            <div class="mt-3">Available Appointment Slots</div>
-                            <div class="flex flex-col justify-start flex-wrap mt-1">
-                                <ng-container
-                                    *ngFor="
+         </div>
+         <div class="mb-3 mt-3 bg-primary-100 bg-opacity-90 rounded-lg shadow-lg p-6">
+            <div class="mb-1 flex justify-between">
+               <div class="text-xl font-semibold text-dark">Neurosurgeon</div>
+               <div>Charger Per Appointment:
+                  <span class="text-danger-600 font-semibold">Rs. 1500</span>
+               </div>
+            </div>
+            <div class="">
+               <div class="mt-2"> Availibility Timings</div>
+               <div class="flex gap-x-2 mt-1 items-center flex-wrap">
+                  <span
+                     class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
+                  >Mon 9AM - 2PM
+                  </span
+                  >
+                  <span
+                     class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
+                  >Mon 9AM - 2PM
+                  </span
+                  >
+                  <span
+                     class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
+                  >Mon 9AM - 2PM
+                  </span
+                  >
+                  <span
+                     class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
+                  >Mon 9AM - 2PM
+                  </span
+                  >
+                  <span
+                     class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
+                  >Mon 9AM - 2PM
+                  </span
+                  >
+                  <span
+                     class="text-dark text-opacity-80 hover:bg-dark hover:bg-opacity-40 hover:text-primary-100 hover:text-opacity-100 transition-colors duration-300 font-light px-4 pt-1 pb-1 border border-current rounded-full block"
+                  >Mon 9AM - 2PM
+                  </span
+                  >
+               </div>
+            </div>
+            <div #slotsContainer class="mt-6 grid grid-rows-[0fr] transition-all duration-300">
+               <div class="overflow-hidden">
+                  <div class="rounded-lg border border-current p-4">
+                     <div class="">Select Appointment Week</div>
+                     <div class="flex justify-start flex-wrap">
+                        <ng-container *ngFor="let week of ['Current Week', 'Next Week', 'Week After Next']; let i = index">
+                           <div class="mb-[0.125rem] mr-4 inline-block min-h-[1.5rem] pl-[1.5rem]">
+                              <input
+                                 id="weekSelectorRadio{{ i }}"
+                                 [checked]="i == 0"
+                                 name="weekSelectorRadio"
+                                 type="radio"
+                                 value="weekSelectorRadio{{ i }}"
+                                 class="relative float-left -ml-[1.5rem] block mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                              />
+                              <label
+                                 for="weekSelectorRadio{{ i }}"
+                                 class="mt-px -ms-2 ps-3 inline-block pl-[0.15rem] hover:cursor-pointer"
+                              >{{ week }}
+                              </label>
+                           </div>
+                        </ng-container>
+                     </div>
+                     <div class="mt-3">Available Appointment Slots</div>
+                     <div class="flex flex-col justify-start flex-wrap mt-1">
+                        <ng-container
+                           *ngFor="
                                         let slot of [
                                             'Monday - Around 3PM to 4PM (01/01/2000)',
                                             'Tueday - Around 1PM to 2PM (02/01/2000)',
@@ -93,176 +111,211 @@
                                         ];
                                         let i = index
                                     "
-                                >
-                                    <label class="mt-px -ms-2 ps-3 inline-block pl-[0.15rem]" for="slotSelectorRadio{{ i }}">{{ slot }}</label>
-                                </ng-container>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div #slotsToggler class="grid grid-rows-[1fr] transition-all duration-300">
-                    <div class="overflow-hidden">
-                        <div class="flex justify-end">
-                            <div
-                                (click)="slotsContainer.classList.add('grid-rows-[1fr]'); slotsToggler.classList.add('!grid-rows-[0fr]')"
-                                class="border-b border-current cursor-pointer"
-                                >View Slots <fa-icon [icon]="faAngleDown"></fa-icon
-                            ></div>
-                        </div>
-                    </div>
-                </div>
+                        >
+                           <label for="slotSelectorRadio{{ i }}" class="mt-px -ms-2 ps-3 inline-block pl-[0.15rem]">{{
+                                 slot
+                              }}
+                           </label>
+                        </ng-container>
+                     </div>
+                  </div>
+               </div>
             </div>
+            <div #slotsToggler class="grid grid-rows-[1fr] transition-all duration-300">
+               <div class="overflow-hidden">
+                  <div class="flex justify-end">
+                     <div
+                        (click)="slotsContainer.classList.add('grid-rows-[1fr]'); slotsToggler.classList.add('!grid-rows-[0fr]')"
+                        class="border-b border-current cursor-pointer"
+                     >View Slots
+                        <fa-icon [icon]="faAngleDown"></fa-icon
+                        >
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="flex flex-col gap-y-3">
+            <div class="shadow-lg rounded-lg bg-primary-100 bg-opacity-90 p-6">
+               <div>
+                  <div class="text-xl text-dark font-semibold"> Doctor of Medicine (MD)</div>
+               </div>
+               <div class="flex gap-x-3 text-dark text-opacity-60">
+                  <div> August 2008</div>
+                  <div>-</div>
+                  <div> June 2012</div>
+               </div>
+               <div class="mt-2">
+                  <div
+                  >Completed a rigorous four-year medical program, specializing in internal medicine and diagnostics.
+                   Developed clinical expertise in treating a
+                   wide range of ailments and honed diagnostic skills through hands-on training and theoretical study.
+                  </div
+                  >
+               </div>
+            </div>
+            <div class="shadow-lg rounded-lg bg-primary-100 bg-opacity-90 p-6">
+               <div>
+                  <div class="text-xl text-dark font-semibold"> Resident Physician, General Surgery</div>
+               </div>
+               <div class="flex gap-x-3 text-dark text-opacity-60">
+                  <div> July 2015</div>
+                  <div>-</div>
+                  <div> July 2020</div>
+               </div>
+               <div class="mt-2">
+                  <div
+                  >Completed a five-year residency program in general surgery at St. John's Hospital. Gained extensive
+                   experience in various surgical
+                   procedures, including trauma surgery, minimally invasive techniques, and emergency care. Assisted in
+                   surgeries, managed patient care, and
+                   participated in research studies focusing on surgical innovations.
+                  </div
+                  >
+               </div>
+            </div>
+         </div>
+         <div class="mt-3 bg-primary-100 bg-opacity-90 p-6 rounded-lg shadow-lg">
+            <div class="font-semibold text-dark text-2xl mb-1">Analytics</div>
+            <div>
+               <div>
+                  <div class="grid grid-cols-6 mt-3 gap-x-3">
+                     <div class="col-span-4 py-2 px-3 bg-opacity-100 rounded-lg border border-current h-[400px]">
+                        <ag-charts-angular
+                           #chartThreeMonthsAppointments
+                           [options]="chartThreeMonthsAppointmentsOptions"
+                        ></ag-charts-angular>
+                     </div>
+                     <div class="col-span-2 bg-opacity-100 h-[400px]">
+                        <div class="grid grid-rows-2 grid-cols-1 h-[400px]">
+                           <div class="row-span-2 rounded-lg border border-current overflow-clip">
+                              <ag-charts-angular
+                                 #chartLast3WeekRating
+                                 [options]="chartLast3WeekRatingOptions"
+                              ></ag-charts-angular>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- <div class="mb-1">Total Completed Appointments: 310 appointments</div>
+           <div class="mb-1">Completed Appointments in Last 7 days: 16 appointments</div> -->
+            </div>
+         </div>
+         <div class="mt-3 bg-primary-100 bg-opacity-90 p-6 rounded-lg shadow-lg">
+            <div class="font-semibold text-dark text-2xl mb-1">Patient Reviews</div>
             <div class="flex flex-col gap-y-3">
-                <div class="shadow-lg rounded-lg bg-primary-100 bg-opacity-90 p-6">
-                    <div>
-                        <div class="text-xl text-dark font-semibold"> Doctor of Medicine (MD) </div>
-                    </div>
-                    <div class="flex gap-x-3 text-dark text-opacity-60">
-                        <div> August 2008 </div>
-                        <div>-</div>
-                        <div> June 2012 </div>
-                    </div>
-                    <div class="mt-2">
-                        <div
-                            >Completed a rigorous four-year medical program, specializing in internal medicine and diagnostics. Developed clinical expertise in treating a
-                            wide range of ailments and honed diagnostic skills through hands-on training and theoretical study.</div
-                        >
-                    </div>
-                </div>
-                <div class="shadow-lg rounded-lg bg-primary-100 bg-opacity-90 p-6">
-                    <div>
-                        <div class="text-xl text-dark font-semibold"> Resident Physician, General Surgery </div>
-                    </div>
-                    <div class="flex gap-x-3 text-dark text-opacity-60">
-                        <div> July 2015 </div>
-                        <div>-</div>
-                        <div> July 2020 </div>
-                    </div>
-                    <div class="mt-2">
-                        <div
-                            >Completed a five-year residency program in general surgery at St. John's Hospital. Gained extensive experience in various surgical
-                            procedures, including trauma surgery, minimally invasive techniques, and emergency care. Assisted in surgeries, managed patient care, and
-                            participated in research studies focusing on surgical innovations.</div
-                        >
-                    </div>
-                </div>
+               <ng-container *ngFor="let i of commonService.range(0, 4)">
+                  <div class="border border-dark border-opacity-50 rounded-lg p-4">
+                     <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat soluta sint id
+                        delectus atque expedita cumque, perferendis
+                        blanditiis! Corrupti quam, veritatis, minus quas quaerat ea debitis, provident vitae alias
+                        aliquid qui! Labore mollitia quasi fuga optio,
+                        ducimus ratione cum doloribus ipsam provident vitae animi dignissimos, deserunt accusamus
+                        delectus accusantium quibusdam quas? Quod facere
+                        maxime quia, neque quas cumque sequi dolor laboriosam quo aspernatur aliquid alias itaque fugit
+                        expedita repellendus eaque! Nisi nobis
+                        nihil cum ratione quisquam pariatur sed dolorum minus aut voluptas suscipit, in assumenda iusto
+                        voluptatibus velit quo, tenetur
+                        praesentium fuga. Ad, voluptatum. Obcaecati nesciunt dolores esse quas.
+                     </div>
+                     <div class="flex justify-end">
+                        <div class="text-sm text-dark text-opacity-50 -mb-1">08:53PM - 01/01/2000</div>
+                     </div>
+                  </div>
+               </ng-container>
             </div>
-            <div class="mt-3 bg-primary-100 bg-opacity-90 p-6 rounded-lg shadow-lg">
-                <div class="font-semibold text-dark text-2xl mb-1">Analytics</div>
-                <div>
-                    <div>
-                        <div class="grid grid-cols-6 mt-3 gap-x-3">
-                            <div class="col-span-4 py-2 px-3 bg-opacity-100 rounded-lg border border-current h-[400px]">
-                                <ag-charts-angular #chartThreeMonthsAppointments [options]="chartThreeMonthsAppointmentsOptions"></ag-charts-angular>
-                            </div>
-                            <div class="col-span-2 bg-opacity-100 h-[400px]">
-                                <div class="grid grid-rows-2 grid-cols-1 h-[400px]">
-                                    <div class="row-span-2 rounded-lg border border-current overflow-clip">
-                                        <ag-charts-angular #chartLast3WeekRating [options]="chartLast3WeekRatingOptions"></ag-charts-angular>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="mb-1">Total Completed Appointments: 310 appointments</div>
-                <div class="mb-1">Completed Appointments in Last 7 days: 16 appointments</div> -->
-                </div>
-            </div>
-            <div class="mt-3 bg-primary-100 bg-opacity-90 p-6 rounded-lg shadow-lg">
-                <div class="font-semibold text-dark text-2xl mb-1">Patient Reviews</div>
-                <div class="flex flex-col gap-y-3">
-                    <ng-container *ngFor="let i of commonService.range(0, 4)">
-                        <div class="border border-dark border-opacity-50 rounded-lg p-4">
-                            <div>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat soluta sint id delectus atque expedita cumque, perferendis
-                                blanditiis! Corrupti quam, veritatis, minus quas quaerat ea debitis, provident vitae alias aliquid qui! Labore mollitia quasi fuga optio,
-                                ducimus ratione cum doloribus ipsam provident vitae animi dignissimos, deserunt accusamus delectus accusantium quibusdam quas? Quod facere
-                                maxime quia, neque quas cumque sequi dolor laboriosam quo aspernatur aliquid alias itaque fugit expedita repellendus eaque! Nisi nobis
-                                nihil cum ratione quisquam pariatur sed dolorum minus aut voluptas suscipit, in assumenda iusto voluptatibus velit quo, tenetur
-                                praesentium fuga. Ad, voluptatum. Obcaecati nesciunt dolores esse quas.
-                            </div>
-                            <div class="flex justify-end">
-                                <div class="text-sm text-dark text-opacity-50 -mb-1">08:53PM - 01/01/2000</div>
-                            </div>
-                        </div>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </div>
 
 <!-- Modal -->
 <div
-    data-te-modal-init
-    data-te-modal-non-invasive="true"
-    class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
-    id="exampleModalNonInvasive"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
+   id="exampleModalNonInvasive"
+   aria-hidden="true"
+   aria-labelledby="exampleModalLabel"
+   data-te-modal-init
+   data-te-modal-non-invasive="true"
+   tabindex="-1"
+   class="backdrop-blur-0 opacity-0 [&:has(>div.opacity-100)]:backdrop-blur-md [&:has(>div.opacity-100)]:pointer-events-auto [&:has(>div.opacity-100)]:opacity-100 bg-dark bg-opacity-75 transition-all duration-200 pointer-events-none fixed inset-0 z-[1055] hidden w-full overflow-y-auto overflow-x-hidden outline-none"
 >
-    <div
-        data-te-modal-dialog-ref
-        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
-    >
-        <div
-            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
-        >
-            <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="exampleModalLabel"> Book Your Appointment </h5>
-                <button
-                    type="button"
-                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-                    data-te-modal-dismiss
-                    aria-label="Close"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="relative flex-auto p-4" data-te-modal-body-ref>
-                <div class="relative mb-3" data-te-input-wrapper-init>
+   <div
+      data-te-modal-dialog-ref
+      class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]"
+   >
+      <div
+         class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+      >
+         <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+            <h5
+               id="exampleModalLabel"
+               class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
+            > Book Your Appointment
+            </h5>
+            <button
+               aria-label="Close"
+               data-te-modal-dismiss
+               type="button"
+               class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+            >
+               <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+               >
+                  <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+            </button>
+         </div>
+         <div data-te-modal-body-ref class="relative flex-auto p-4">
+            <div data-te-input-wrapper-init class="relative mb-3">
                     <textarea
-                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                        id="exampleFormControlTextarea1"
-                        rows="3"
-                        placeholder="For example; I am having itching and flu for 2 days and I also have ..."
+                       id="exampleFormControlTextarea1"
+                       placeholder="For example; I am having itching and flu for 2 days and I also have ..."
+                       rows="3"
+                       class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                     ></textarea>
-                    <label
-                        for="exampleFormControlTextarea1"
-                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                        >Describe Your Symptoms</label
-                    >
-                </div>
+               <label
+                  for="exampleFormControlTextarea1"
+                  class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+               >Describe Your Symptoms
+               </label
+               >
             </div>
-            <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                <button
-                    type="button"
-                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
-                    data-te-modal-dismiss
-                    data-te-ripple-init
-                    data-te-ripple-color="light"
-                >
-                    Cancel
-                </button>
-                <button
-                    type="button"
-                    class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                    data-te-ripple-init
-                    data-te-ripple-color="light"
-                >
-                    <div
-                        class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                        role="status"
-                    >
-                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"> Loading... </span>
-                    </div>
-                    Book Appointment
-                </button>
-            </div>
-        </div>
-    </div>
+         </div>
+         <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+            <button
+               data-te-modal-dismiss
+               data-te-ripple-color="light"
+               data-te-ripple-init
+               type="button"
+               class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+            >
+               Cancel
+            </button>
+            <button
+               data-te-ripple-color="light"
+               data-te-ripple-init
+               type="button"
+               class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+            >
+               <div
+                  role="status"
+                  class="inline-block h-3 w-3 mr-2 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+               >
+                  <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                     Loading...
+                  </span>
+               </div>
+               Book Appointment
+            </button>
+         </div>
+      </div>
+   </div>
 </div>
 <!-- Modal -->

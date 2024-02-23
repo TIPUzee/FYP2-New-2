@@ -1,19 +1,22 @@
 from __future__ import annotations
 
-from typing import Any, Literal, Optional
+from typing import Any, Literal, Optional, TypeVar
+from abc import ABC, abstractmethod
 
 from ..funcs import Func
 from ..sql.sql import SQL
 
+SQLEntityChildType = TypeVar('SQLEntityChildType', bound='SQLEntity')
 
-class SQLEntity:
+
+class SQLEntity(ABC):
     """
     The SQLEntity class provides a base class for creating SQL entities with dynamic properties.
     It allows for easy manipulation and interaction with SQL databases.
 
     Usage Example:
     --------------
-    >>> Create a subclass of SQLEntity
+    >>> # Create a subclass of SQLEntity
     ... class User(SQLEntity):
     ...     m_id = 0
     ...     m_name = ""
@@ -60,7 +63,25 @@ class SQLEntity:
         super().__init__()
 
     @property
-    def key(self):
+    @abstractmethod
+    def db_table_name(self) -> str:
+        """
+        Property Name: db_table_name
+        -----------------------------
+        The `db_table_name` property is an abstract property that should be implemented in the subclass.
+        It should return the name of the database table that the entity represents.
+
+        Usage Example:
+        --------------
+        >>> class User(SQLEntity):
+        ...     @property
+        ...     def db_table_name(self):
+        ...         return 'user'
+        """
+        pass
+
+    @property
+    def key(self: SQLEntityChildType) -> SQLEntityChildType:
         """
         Temporary Property Name Access:
         -------------------------------
@@ -75,6 +96,26 @@ class SQLEntity:
 
         self.__getting_prop_name = True
         return self
+
+    def reset(self):
+        """
+        Method Name: reset
+        ------------------
+        The `reset` method resets the entity by clearing the changed properties list.
+
+        Usage Example:
+        --------------
+        >>> user = User()
+        >>> user.m_name = "John Doe"
+        >>> user.m_email = "john@gmail.com"
+        >>> user.reset()
+        >>> user.changed_props # Returns an empty list ([])
+        >>> user.m_name # Returns None
+        """
+        self.changed_props = []
+        [setattr(self, Func.get_attr_custom_storage_name(prop), None) for prop in self.all_props]
+        if self._sql:
+            self._sql.rollback()
 
     def __create_property(self, attr_name):
         def getter(self):
@@ -170,8 +211,6 @@ class SQLEntity:
         _desc: bool = False,
         reset_changed_props: bool = True,
     ) -> list[dict[str, Any]]:
-        _cls = self.__cls.__name__.lower()
-
         select_cols_str = self.__build_select_cols(select_cols)
         where_equals, where_vals = self.__build_where_cols(
             where_equals,
@@ -191,7 +230,8 @@ class SQLEntity:
         )
         _order_by_str = self.__build_order_by(_order_by, _desc)
 
-        _query = f"SELECT {select_cols_str} FROM {_cls} {where_equals} LIMIT {_limit} OFFSET {_offset} {_order_by_str} "
+        _query = (f"SELECT {select_cols_str} FROM {self.db_table_name} {where_equals} "
+                  f"LIMIT {_limit} OFFSET {_offset} {_order_by_str} ")
 
         if reset_changed_props:
             self.changed_props = []
@@ -278,8 +318,6 @@ class SQLEntity:
         _offset: int = 0,
         reset_changed_props: bool = True,
     ) -> int:
-        _cls = self.__cls.__name__.lower()
-
         where_equals, where_vals = self.__build_where_cols(
             where_equals,
             where_not_equals,
@@ -296,7 +334,7 @@ class SQLEntity:
             where_between,
             where_not_between
         )
-        _query = f"SELECT COUNT(*) FROM {_cls} {where_equals}"
+        _query = f"SELECT COUNT(*) FROM {self.db_table_name} {where_equals}"
 
         if reset_changed_props:
             self.changed_props = []
@@ -324,8 +362,6 @@ class SQLEntity:
         where_not_between: list[Any] = None,
         reset_changed_props: bool = True,
     ) -> bool:
-        _cls = self.__cls.__name__.lower()
-
         where_equals, where_vals = self.__build_where_cols(
             where_equals,
             where_not_equals,
@@ -342,7 +378,7 @@ class SQLEntity:
             where_between,
             where_not_between
         )
-        _query = f"SELECT 1 FROM {_cls} {where_equals} LIMIT 1"
+        _query = f"SELECT 1 FROM {self.db_table_name} {where_equals} LIMIT 1"
 
         if reset_changed_props:
             self.changed_props = []
@@ -374,8 +410,6 @@ class SQLEntity:
         _desc: bool = False,
         reset_changed_props: bool = True,
     ) -> bool:
-        _cls = self.__cls.__name__.lower()
-
         where_equals, where_vals = self.__build_where_cols(
             where_equals,
             where_not_equals,
@@ -394,7 +428,7 @@ class SQLEntity:
         )
         _order_by_str = SQLEntity.__build_order_by(_order_by, _desc)
 
-        _query = f"DELETE FROM {_cls} {where_equals} LIMIT {_limit} OFFSET {_offset} {_order_by_str} "
+        _query = f"DELETE FROM {self.db_table_name} {where_equals} LIMIT {_limit} OFFSET {_offset} {_order_by_str} "
 
         if reset_changed_props:
             self.changed_props = []
@@ -409,10 +443,9 @@ class SQLEntity:
         reset_changed_props: bool = True,
         load_inserted_id_to: str = None,
     ) -> int:
-        _cls = self.__cls.__name__.lower()
         insert_cols, insert_placeholders, insert_vals = self.__build_insert_cols(insert_cols)
 
-        _query = f"INSERT INTO {_cls} ({insert_cols}) VALUES ({insert_placeholders})"
+        _query = f"INSERT INTO {self.db_table_name} ({insert_cols}) VALUES ({insert_placeholders})"
 
         if reset_changed_props:
             self.changed_props = []
@@ -427,7 +460,7 @@ class SQLEntity:
     def update(
         self,
         set_cols: list[Any] | Literal['Changed'] = 'Changed',
-        where_equals: list[Any] = ['m_id'],
+        where_equals: list[Any] | Literal['m_id'] = 'm_id',
         where_not_equals: list[Any] = None,
         where_in: list[Any] = None,
         where_not_in: list[Any] = None,
@@ -444,7 +477,8 @@ class SQLEntity:
         _limit: int = 1,
         reset_changed_props: bool = True,
     ) -> bool:
-        _cls = self.__cls.__name__.lower()
+        if where_equals == 'm_id':
+            where_equals = ['m_id']
 
         pre_removed_cols = []
         if set_cols == 'Changed' and 'm_id' in self.changed_props:
@@ -484,7 +518,7 @@ class SQLEntity:
             where_not_between
         )
 
-        _query = f"UPDATE {_cls} SET {set_cols_str} {where_equals} LIMIT {_limit}"
+        _query = f"UPDATE {self.db_table_name} SET {set_cols_str} {where_equals} LIMIT {_limit}"
 
         if reset_changed_props:
             self.changed_props = []

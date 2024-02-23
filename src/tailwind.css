@@ -1,3 +1,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .btn.btn-shadow {
+        @apply shadow-[0_6px_6px_-4px_rgba(0,0,0,0.2)] hover:shadow-[0_7px_7px_-4px_rgba(0,0,0,0.2)];
+    }
+
+    .btn {
+        @apply inline-block cursor-pointer select-none rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition-all duration-200 ease-in-out focus:outline-none focus:ring-0
+    }
+
+    .btn-primary-100 {
+        @apply bg-primary-100 text-primary-700 hover:bg-primary-accent-100 focus:bg-primary-accent-100 active:bg-primary-accent-200
+    }
+
+    .btn-red {
+        @apply bg-danger-600 text-white hover:bg-danger-700 focus:bg-danger-700 active:bg-danger-700
+    }
+
+    .btn-blue {
+        @apply bg-blue-500 text-white hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-600
+    }
+
+    .btn-yellow {
+        @apply bg-yellow-500 text-white hover:bg-yellow-600 focus:bg-yellow-600 active:bg-yellow-600
+    }
+
+    .form---error {
+        @apply text-danger-600 text-sm ps-1 mt-1 grid grid-rows-[0fr] [&>*]:overflow-hidden transition-all duration-300 ease-out opacity-0
+    }
+
+    .form-input---input {
+        @apply block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:!opacity-100 peer-focus:text-dark data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0
+    }
+
+    .form-input---label {
+        @apply pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none
+    }
+
+    .form-input---helper-text {
+        @apply w-full text-end text-sm text-neutral-500 peer-focus:text-primary dark:text-neutral-200 dark:peer-focus:text-primary
+    }
+
+    .form-input---password-eye-icon {
+        @apply absolute top-1/2 -translate-y-1/2 right-3 text-lg text-inherit cursor-pointer opacity-50 transition-opacity duration-200
+    }
+
+    .form-input---invalid {
+        @apply text-danger-600 [&_[data-te-input-notch-leading-ref]]:!border-[currentColor] [&_[data-te-input-notch-middle-ref]]:!border-[currentColor] [&_[data-te-input-notch-trailing-ref]]:!border-[currentColor] [&_label]:!text-[currentColor]
+    }
+
+    .form-select---invalid {
+        @apply text-danger-600 [&_[data-te-input-notch-leading-ref]]:!border-[currentColor] [&_[data-te-input-notch-middle-ref]]:!border-[currentColor] [&_[data-te-input-notch-trailing-ref]]:!border-[currentColor] [&_label]:!text-[currentColor] [&_input[type="text"]]:!text-[currentColor]
+    }
+
+    .form-date-picker---input {
+        @apply block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:!opacity-100 peer-focus:text-blue-600 data-[te-input-state-active]:placeholder:!opacity-100 motion-reduce:transition-none [&:not(.te-input-placeholder-active)]:placeholder:opacity-0
+    }
+
+    .form-date-picker---label {
+        @apply pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none
+    }
+}

@@ -27,6 +27,7 @@
         "@ngx-loading-bar/router": "^6.0.2",
         "ag-charts-angular": "^9.0.1",
         "animejs": "^3.2.2",
+        "ngx-cookie-service": "^17.1.0",
         "ngx-extended-pdf-viewer": "^18.1.14",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",

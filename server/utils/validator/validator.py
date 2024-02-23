@@ -6,8 +6,11 @@ from inspect import FullArgSpec, getfullargspec
 from typing import Any, Callable, Literal, Optional, Union
 
 import bleach
+import phonenumbers
 from bleach.css_sanitizer import CSSSanitizer
 from bs4 import BeautifulSoup
+from phonenumbers import carrier
+from phonenumbers.phonenumberutil import number_type
 
 from ..funcs import Func
 from ..request import App
@@ -538,7 +541,7 @@ class Validator:
 
         def _(val) -> bool:
             if (type(val) != str
-                    or not 3 <= len(val) <= 15
+                    or not 3 <= len(val) <= 16
                     or not re.match(r'^[a-zA-Z0-9_-]+$', val)
                     or val.startswith('_')
                     or val.startswith('-')
@@ -549,7 +552,51 @@ class Validator:
                 return False
             return True
 
-        _.__custom_str_format__ = f'Username(Letters: A-Z, a-z and Numbers: 0-9 and Underscore (_) and Hyphen (-))'
+        _.__custom_str_format__ = (f'Username(Letters: A-Z, a-z and Numbers: 0-9 and Underscore (_) and Hyphen (-) and '
+                                   f'Length: 3-16)')
+        return _
+
+    @staticmethod
+    def Name():
+        """
+        Checks if the value is a valid name.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a valid name, and False otherwise.
+
+        Examples
+        -------
+        >>> class Person(Validator.PropertyTypeValidatorEntity):
+        ...     def __init__(self):
+        ...         self.m_name = Validator.PropertyValidatable(
+        ...             Validator.Name()
+        ...         )
+        ...         super().__init__()
+        >>> p = Person()
+        >>> p.m_name = None # False
+        >>> p.m_name = "John Doe" # True
+        >>> p.m_name = " Alice " # True
+        >>> p.m_name = "Jo" # False (less than 3 characters after trimming)
+        >>> p.m_name = "1" # False (contains non-letter characters)
+        >>> p.m_name = "Bob@" # False (contains non-letter characters)
+        """
+
+        def _(val) -> bool:
+            if not isinstance(val, str):
+                return False
+
+            val = val.strip()
+            if len(val) < 3:
+                return False
+
+            if not re.match(r'^[A-Za-z\s]+$', val):
+                return False
+
+            return True
+
+        _.__custom_str_format__ = "Name(Letters and Spaces only, min length: 3 after trimming)"
         return _
 
     @staticmethod
@@ -613,14 +660,143 @@ class Validator:
 
         def _(val) -> bool:
             if (not isinstance(val, str)
-                    or not 8 <= len(val) < 30  # You can adjust the length requirements as needed
                     or not re.match(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&_-]+$', val)):
-                # or not re.match(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]?)[A-Za-z\d@$!%*?&_-]+$', val)):
                 return False
             return True
 
-        _.__custom_str_format__ = (f'Password (Length: 8-30, Must contain at least one uppercase letter, '
+        _.__custom_str_format__ = (f'Password (Must contain at least one uppercase letter, '
                                    f'one lowercase letter, one digit. Special characters: @$!%*?& are optional.)')
+        return _
+
+    @staticmethod
+    def Date():
+        """
+        Checks if the value is a valid date.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a valid date, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_date = Validator.PropertyValidatable(
+            ...             Validator.Date()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_date = 'Ali' # False
+            >>> p.m_date = [1, 2, 3] # False
+            >>> p.m_date = '2021-10-10' # True
+        """
+
+        def _(val) -> bool:
+            return bool(re.match(r'^\d{4}-\d{2}-\d{2}$', val))
+
+        _.__custom_str_format__ = f'Date("YYYY-MM-DD")'
+        return _
+
+    @staticmethod
+    def DateTime():
+        """
+        Checks if the value is a valid date and time.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a valid date and time, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_date_time = Validator.PropertyValidatable(
+            ...             Validator.DateTime()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_date_time = 'Ali' # False
+            >>> p.m_date_time = [1, 2, 3] # False
+            >>> p.m_date_time = '2021-10-10 12:00:00' # True
+        """
+
+        def _(val) -> bool:
+            return bool(re.match(r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$', val))
+
+        _.__custom_str_format__ = f'DateTime("YYYY-MM-DD HH:MM:SS")'
+        return _
+
+    @staticmethod
+    def Phone():
+        """
+        Checks if the value is a valid phone number.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is a valid phone number, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.m_phone = Validator.PropertyValidatable(
+            ...             Validator.Phone()
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.m_phone = 'Ali' # False
+            >>> p.m_phone = [1, 2, 3] # False
+            >>> p.m_phone = '+923001234567' # True
+        """
+
+        def _(val: str) -> bool:
+            if not val.startswith('+'):
+                return False
+            try:
+                return carrier._is_mobile(number_type(phonenumbers.parse(val, None)))
+            except phonenumbers.phonenumberutil.NumberParseException:
+                return False
+
+        _.__custom_str_format__ = f'Phone(+XXXXXXXXXXXX)'
+        return _
+
+    @staticmethod
+    def In(*values):
+        """
+        Checks if the value is in a list of allowed values.
+
+        Parameters
+        ----------
+        values : Any
+            A list of allowed values.
+
+        Returns
+        -------
+        Callable[[Any], bool]
+            A validator function that returns True if the value is in the list of allowed values, and False otherwise.
+
+        Examples
+        -------
+            >>> class Person(Validator.PropertyTypeValidatorEntity):
+            ...     def __init__(self):
+            ...         self.status = Validator.PropertyValidatable(
+            ...             Validator.In('ACTIVE', 'INACTIVE', 'PENDING')
+            ...         )
+            ...         super().__init__()
+            >>> p = Person()
+            >>> p.status = 'ACTIVE' # True
+            >>> p.status = 'INACTIVE' # True
+            >>> p.status = 'pending' # False
+            >>> p.status = 'deleted' # False
+        """
+
+        def _(val) -> bool:
+            return val in values
+
+        _.__custom_str_format__ = f'In({values})'
         return _
 
     @staticmethod
@@ -851,6 +1027,23 @@ class Validator:
 
         return decorated
 
+    @staticmethod
+    def validatable(func: Callable[[Any], bool]) -> Any:
+        """
+        Checks if the value meets the specified validation criteria.
+
+        Parameters
+        ----------
+        func : Callable[[Any], bool]
+            The validation function that checks if the value meets the criteria.
+
+        Returns
+        -------
+        PropertyValidatable
+            An instance of PropertyValidatable with the specified validation function.
+        """
+        return Validator.PropertyValidatable(func)
+
     class PropertyValidatable:
         """
         Checks if the value meets the specified validation criteria.
@@ -915,15 +1108,29 @@ class Validator:
 
             This method generates the properties and sets the default validation error type to 'FRONTEND'.
             """
+
             self.__cls = self.__class__
+            self.__validation_turned_on__ = False
+
             if not hasattr(self, '__property_type_validator_entity_init_called__'):
                 self.__generate_properties()
                 setattr(self, '__property_type_validator_entity_init_called__', True)
+
             self.__property_validator_errors_type: Union[
                 Literal['FRONTEND'], Literal['CLIENT'], Literal['BACKEND']] = 'FRONTEND'
+
             super().__init__()
 
-        def set_validator_errors_type(self, errors_type: Union[Literal['FRONTEND'], Literal['CLIENT'], Literal['BACKEND']]):
+        def turn_on_validation(self):
+            self.__validation_turned_on__ = True
+
+        def turn_off_validation(self):
+            self.__validation_turned_on__ = False
+
+        def set_validator_errors_type(
+            self,
+            errors_type: Union[Literal['FRONTEND'], Literal['CLIENT'], Literal['BACKEND']]
+            ):
             """
             Sets the type of validation errors to be returned.
             If any validation error occurs, the error will be returned in the specified type.
@@ -999,34 +1206,21 @@ class Validator:
                     fset(self, value)
                     return
 
-                if not validator.validate_func(value):
+                if not validator.validate_func(value) and self.__validation_turned_on__:
                     if self.__property_validator_errors_type == 'FRONTEND':
                         return App.Res.frontend_error(
-                            f'Type validation failed',
-                            f'key={attr_name}',
-                            f'expected={validator.validate_func.__custom_str_format__}',
-                            f'given={type(value)}',
-                            f'val={value}',
-                            f'class_name={self.__class__.__name__}'
+                            f'Required type for {attr_name} is {validator.validate_func.__custom_str_format__} in '
+                            f'provided inputs. The given value {{{value}}} does not satisfy the criteria.',
                         )
                     elif self.__property_validator_errors_type == 'BACKEND':
                         return App.Res.server_error(
-                            f'Type validation failed',
-                            f'key={attr_name}',
-                            f'expected={validator.validate_func.__custom_str_format__}',
-                            f'given={type(value)}',
-                            f'val={value}',
-                            f'class_name={self.__class__.__name__}'
+                            f'Required type for {attr_name} is {validator.validate_func.__custom_str_format__} in '
+                            f'provided inputs. The given value {{{value}}} does not satisfy the criteria.',
                         )
                     elif self.__property_validator_errors_type == 'CLIENT':
                         return App.Res.client_error(
-                            App.Res.CustomErrorCode.INVALID_VALUE,
-                            f'Type validation failed',
-                            f'key={attr_name}',
-                            f'expected={validator.validate_func.__custom_str_format__}',
-                            f'given={type(value)}',
-                            f'val={value}',
-                            f'class_name={self.__class__.__name__}'
+                            f'Required type for {attr_name} is {validator.validate_func.__custom_str_format__} in '
+                            f'provided inputs. The given value {{{value}}} does not satisfy the criteria.',
                         )
                     else:
                         return

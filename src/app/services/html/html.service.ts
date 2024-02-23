@@ -1,35 +1,71 @@
-import { ElementRef, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
-import { Datatable, initTE, Input, Collapse, Ripple, Select, Datepicker, Tooltip, Modal, Toast, Timepicker, Lightbox, Offcanvas, Dropdown } from 'tw-elements';
+import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import {
+    Collapse,
+    Datatable,
+    Datepicker,
+    Dropdown,
+    initTE,
+    Input,
+    Lightbox,
+    Modal,
+    Offcanvas,
+    Ripple,
+    Select,
+    Timepicker,
+    Toast,
+    Tooltip,
+    Validation
+} from 'tw-elements';
 import anime from 'animejs/lib/anime.es.js';
+import { AnimeInstance } from "animejs";
 
 @Injectable({
     providedIn: 'root',
 })
 export class HtmlService {
     _body!: HTMLBodyElement;
-    private renderer!: Renderer2;
     eleCurrentScroll: { [key: string]: Array<number> } = {};
     _oldWindowWidth: number;
     _oldWindowHeight: number;
     _datatable_unique_anime_id_count: number = 0;
-
+    private renderer!: Renderer2;
+    
+    
     constructor(rendererFactory: RendererFactory2) {
         this.renderer = rendererFactory.createRenderer(null, null);
         this._oldWindowWidth = window.innerWidth;
         this._oldWindowHeight = window.innerHeight;
     }
-
+    
+    
     initTailwindElements(): void {
-        initTE({ Datatable, Input, Collapse, Ripple, Select, Datepicker, Tooltip, Modal, Toast, Timepicker, Lightbox, Offcanvas, Dropdown }, { allowReinits: true });
+        initTE({
+            Datatable,
+            Input,
+            Collapse,
+            Ripple,
+            Select,
+            Datepicker,
+            Tooltip,
+            Modal,
+            Toast,
+            Timepicker,
+            Lightbox,
+            Offcanvas,
+            Dropdown,
+            Validation,
+        }, { allowReinits: true });
     }
-
+    
+    
     body(): HTMLBodyElement {
         if (!this._body) {
             this._body = document.body as HTMLBodyElement;
         }
         return this._body;
     }
-
+    
+    
     bodyOverflowY(enable: Boolean): Boolean {
         if (enable != undefined) {
             if (enable) {
@@ -43,7 +79,8 @@ export class HtmlService {
             return !document.body.classList.contains('overflow-y-hidden');
         }
     }
-
+    
+    
     createDataTable(
         dataTableContainer: HTMLDivElement,
         dataTableSearch: HTMLInputElement,
@@ -57,14 +94,20 @@ export class HtmlService {
         dataTableContainer.setAttribute('datatable-unique-anime-id', String(anime_id));
         let lastSearchQuery: string = '';
         let lastSelectedRow!: HTMLTableRowElement;
-
+        
         // Init Datatable
-        let dataTableInstance = new Datatable(dataTableContainer, { columns: columns, rows: rows }, { loading: rows == undefined ? true : false, clickableRows: true });
-
+        let dataTableInstance = new Datatable(
+            dataTableContainer,
+            { columns: columns, rows: rows },
+            { loading: rows == undefined ? true : false, clickableRows: true }
+        );
+        
         // Set Animation On Rerender
-        (dataTableContainer as any).addEventListener('render.te.datatable', () => {
+        (
+            dataTableContainer as any
+        ).addEventListener('render.te.datatable', () => {
             anime({
-                targets: `#dataTableContainer[datatable-unique-anime-id="${anime_id}"] table tbody tr`,
+                targets: `#dataTableContainer[datatable-unique-anime-id="${ anime_id }"] table tbody tr`,
                 opacity: [
                     { value: 0, duration: 0 },
                     { value: 1, duration: 170 },
@@ -78,7 +121,7 @@ export class HtmlService {
                 complete: e => {},
             });
         });
-
+        
         // Set Search Event
         let searchEvent = () => {
             let searchBtns = searchButtonsContainer?.querySelectorAll('.searchBtn') as NodeListOf<HTMLDivElement>;
@@ -96,7 +139,7 @@ export class HtmlService {
                 searchEvent();
             }
         });
-
+        
         dataTableSearch.addEventListener('search', (event: Event) => {
             if (lastSearchQuery != dataTableSearch.value) {
                 lastSearchQuery = dataTableSearch.value;
@@ -111,41 +154,51 @@ export class HtmlService {
                 }
             });
         });
-
+        
         // Set Previous Selected Row Bg Colored
-        (dataTableContainer as any).addEventListener('rowClick.te.datatable', (e: any) => {
+        (
+            dataTableContainer as any
+        ).addEventListener('rowClick.te.datatable', (e: any) => {
             let _selectedRowIndex = e['row']['rowIndex'];
-            let newlySelectedRow = dataTableContainer.querySelector(`tr[data-te-index="${_selectedRowIndex}"]`) as HTMLTableRowElement;
+            let newlySelectedRow = dataTableContainer.querySelector(`tr[data-te-index="${ _selectedRowIndex }"]`) as HTMLTableRowElement;
             newlySelectedRow?.classList.add('bg-primary-200');
             lastSelectedRow?.classList.remove('bg-primary-200');
             lastSelectedRow = newlySelectedRow;
         });
-
+        
         return dataTableInstance;
     }
-
+    
+    
     updateDataTable(dataTableInstance: any, rows: Array<Array<any>>): void {
         setTimeout(() => {
             dataTableInstance.update({ rows }, { loading: false });
         }, 2000);
     }
-
-    onInView(element: HTMLDivElement, xPadding: number, yPadding: number, callback: CallableFunction, once: boolean): void {
+    
+    
+    onInView(
+        element: HTMLDivElement,
+        xPadding: number,
+        yPadding: number,
+        callback: CallableFunction,
+        once: boolean
+    ): void {
         let _callback = (x: number, y: number) => {
             var box = element.getBoundingClientRect();
-
+            
             var body = document.body;
             var docEl = document.documentElement;
-
+            
             var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
             var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
-
+            
             var clientTop = docEl.clientTop || body.clientTop || 0;
             var clientLeft = docEl.clientLeft || body.clientLeft || 0;
-
+            
             var top = Math.round(box.top + scrollTop - clientTop);
             var left = Math.round(box.left + scrollLeft - clientLeft);
-
+            
             if (y + window.innerHeight >= top + yPadding && y <= top + element.clientHeight - yPadding) {
                 callback();
             } else {
@@ -153,31 +206,39 @@ export class HtmlService {
             }
         };
         var box = element.getBoundingClientRect();
-
+        
         var body = document.body;
         var docEl = document.documentElement;
-
+        
         var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
         var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
-
+        
         var clientTop = docEl.clientTop || body.clientTop || 0;
         var clientLeft = docEl.clientLeft || body.clientLeft || 0;
-
+        
         var top = Math.round(box.top + scrollTop - clientTop);
         var left = Math.round(box.left + scrollLeft - clientLeft);
-        if (window.scrollY + window.innerHeight >= top + yPadding && window.scrollY <= top + element.clientHeight - yPadding) {
+        if (window.scrollY +
+            window.innerHeight >=
+            top +
+            yPadding &&
+            window.scrollY <=
+            top +
+            element.clientHeight -
+            yPadding) {
             callback();
         } else {
             this.onWindowScroll(_callback, '', once);
         }
     }
-
+    
+    
     setPrintCurrentBreakPoint() {
         let printBreakPoint = () => {
             const body = document.body;
-
+            
             const newDiv = this.renderer.createElement('div');
-
+            
             this.renderer.setStyle(newDiv, 'position', 'fixed');
             this.renderer.setStyle(newDiv, 'top', '0');
             this.renderer.setStyle(newDiv, 'right', '0');
@@ -186,7 +247,7 @@ export class HtmlService {
             this.renderer.setStyle(newDiv, 'padding-inline', '20px');
             this.renderer.setStyle(newDiv, 'padding-block', '10px');
             this.renderer.setStyle(newDiv, 'color', 'black');
-
+            
             const screenWidth = window.innerWidth;
             let breakPoint = '';
             if (screenWidth < 640) {
@@ -202,10 +263,10 @@ export class HtmlService {
             } else {
                 breakPoint = '2xl';
             }
-
+            
             this.renderer.appendChild(newDiv, this.renderer.createText(breakPoint));
             this.renderer.addClass(newDiv, 'breakPointPrinter');
-
+            
             this.renderer.appendChild(body, newDiv);
             setTimeout(() => {
                 this.renderer.removeChild(body, newDiv);
@@ -216,7 +277,8 @@ export class HtmlService {
         });
         printBreakPoint();
     }
-
+    
+    
     addWindowResizeEventListener(_callback: CallableFunction, _toCallOnStartup: boolean = false) {
         window.addEventListener('resize', event => {
             _callback(window.innerHeight, window.innerWidth);
@@ -225,7 +287,8 @@ export class HtmlService {
             _callback(window.innerHeight, window.innerWidth);
         }
     }
-
+    
+    
     addWindowWidthResizeEventListener(_callback: CallableFunction, _toCallOnStartup: boolean = false) {
         window.addEventListener('resize', event => {
             if (this._oldWindowWidth != window.innerWidth) {
@@ -237,7 +300,8 @@ export class HtmlService {
             _callback(window.innerHeight, window.innerWidth);
         }
     }
-
+    
+    
     addWindowHeightResizeEventListener(_callback: CallableFunction, _toCallOnStartup: boolean = false) {
         window.addEventListener('resize', event => {
             if (this._oldWindowHeight != window.innerHeight) {
@@ -249,7 +313,8 @@ export class HtmlService {
             _callback(window.innerHeight, window.innerWidth);
         }
     }
-
+    
+    
     onScroll(eleSelecter: string, func: CallableFunction, scroll: string = '') {
         console.log('Scroll Event');
         let ele = document.querySelector(eleSelecter);
@@ -276,18 +341,21 @@ export class HtmlService {
             this.eleCurrentScroll[eleSelecter][1] = ele.scrollLeft;
         });
     }
-
+    
+    
     onScrollX(eleSelecter: string, func: CallableFunction) {
         this.onScroll(eleSelecter, func, 'x');
     }
-
+    
+    
     onScrollY(eleSelecter: string, func: CallableFunction) {
         this.onScroll(eleSelecter, func, 'y');
     }
-
+    
+    
     onWindowScroll(func: CallableFunction, scroll: string = '', once: boolean = false) {
         let windowCurrentScroll: Array<number> = [0, 0];
-
+        
         document.addEventListener(
             'scroll',
             event => {
@@ -308,21 +376,25 @@ export class HtmlService {
             { once: once },
         );
     }
-
+    
+    
     onWindowScrollY(func: CallableFunction) {
         this.onWindowScroll(func, 'y');
     }
-
+    
+    
     onWindowScrollX(func: CallableFunction) {
         this.onWindowScroll(func, 'x');
     }
-
+    
+    
     scrollToTop(): void {
         setTimeout(() => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 50);
     }
-
+    
+    
     initConsoleDeveloperDetailsLoop(): void {
         setInterval(() => {
             console.clear();
@@ -332,5 +404,54 @@ export class HtmlService {
             console.log('Email: zeeshannadeem20arid1896@gmail.com');
             console.log('Location: Gujrat Pakistan');
         }, 1000);
+    }
+    
+    
+    initFormSubmissionLoader(loader: HTMLDivElement) {
+        let animation1: AnimeInstance;
+        
+        animation1 = anime({
+            targets: loader,
+            marginRight: [
+                { value: '0px', duration: 0 },
+                { value: '16px', duration: 800 },
+            ],
+            opacity: [
+                { value: 0, duration: 0 },
+                { value: 0, duration: 500 },
+                { value: 1, duration: 300 },
+            ],
+            easing: 'easeInOutExpo',
+        });
+        
+        return () => {
+            if (animation1) {
+                setTimeout(() => {
+                    animation1.pause();
+                    animation1.reverse();
+                    animation1.play();
+                });
+            }
+        }
+    }
+    
+    
+    initFormSubmissionBtnDisable(submitBtn: HTMLButtonElement) {
+        let animation: AnimeInstance = anime({
+            targets: submitBtn,
+            opacity: [
+                { value: 1, duration: 0 },
+                { value: 0.5, duration: 300 },
+            ],
+            easing: 'easeInOutExpo',
+        });
+        submitBtn.disabled = true;
+        
+        return () => {
+            animation.pause();
+            animation.reverse();
+            animation.play();
+            submitBtn.disabled = false;
+        }
     }
 }
